@@ -7,17 +7,66 @@
 //
 import MapKit
 import UIKit
-
 class ViewController: UIViewController {
-
+    let locationManager = CLLocationManager()
+    
+    @IBOutlet weak var map: MKMapView!
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+      super.viewDidLoad()
+      checkLocationServices()
+      fetchStadiumsOnMap(bins)
         
     }
-    @IBOutlet weak var map: MKMapView!
+    struct Bin {
+      var type: String
+      var lattitude: CLLocationDegrees
+      var longtitude: CLLocationDegrees
+    }
     
-
+    let bins = [Bin(type: "carta", lattitude: 40.7723, longtitude: 14.7899),
+                    Bin(type: "Stamford Bridge", lattitude: 51.4816, longtitude: -0.191034),
+                    Bin(type: "White Hart Lane", lattitude: 51.6033, longtitude: -0.065684),
+                    Bin(type: "Olympic Stadium", lattitude: 51.5383, longtitude: -0.016587),
+                    Bin(type: "Old Trafford", lattitude: 53.4631, longtitude: -2.29139),
+                    Bin(type: "Anfield", lattitude: 53.4308, longtitude: -2.96096)]
+    
+    
+    
+    func checkLocationServices() {
+      if CLLocationManager.locationServicesEnabled() {
+        checkLocationAuthorization()
+      } else {
+        // Show alert letting the user know they have to turn this on.
+      }
+    }
+    
+    func checkLocationAuthorization() {
+      switch CLLocationManager.authorizationStatus() {
+      case .authorizedWhenInUse:
+        map.showsUserLocation = true
+    
+      // For these case, you need to show a pop-up telling users what's up and how to turn on permisneeded if needed
+      case .denied:
+        break
+      case .notDetermined:
+        locationManager.requestWhenInUseAuthorization()
+        map.showsUserLocation = true
+      case .restricted:
+        break
+      case .authorizedAlways:
+        break
+      @unknown default:
+        break
+        }
+    }
+    
+    func fetchStadiumsOnMap(_ bins: [Bin]) {
+    for bin in bins {
+      let annotations = MKPointAnnotation()
+      annotations.title = bin.type
+      annotations.coordinate = CLLocationCoordinate2D(latitude: bin.lattitude, longitude: bin.longtitude)
+      map.addAnnotation(annotations)
+    }
 }
 
+}
