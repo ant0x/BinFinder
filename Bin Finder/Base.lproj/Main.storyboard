@@ -21,13 +21,24 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="9Xk-HR-z01"/>
                                 </connections>
                             </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kht-Ec-aX2">
+                                <rect key="frame" x="142" y="37" width="130" height="31"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="JX3-Qi-XcF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="0Kv-si-0Kz"/>
                             <constraint firstItem="JX3-Qi-XcF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7GR-SJ-wPE"/>
                             <constraint firstAttribute="bottom" secondItem="JX3-Qi-XcF" secondAttribute="bottom" id="8ZZ-J3-5Jm"/>
+                            <constraint firstItem="Kht-Ec-aX2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-7" id="FjQ-4t-MJa"/>
                             <constraint firstItem="JX3-Qi-XcF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fel-tN-Wxa"/>
+                            <constraint firstItem="Kht-Ec-aX2" firstAttribute="centerX" secondItem="JX3-Qi-XcF" secondAttribute="centerX" id="t0B-1t-oQb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Kht-Ec-aX2" secondAttribute="bottom" constant="795" id="u6X-rv-R7p"/>
+                            <constraint firstItem="Kht-Ec-aX2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="142" id="zpD-ha-AdV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

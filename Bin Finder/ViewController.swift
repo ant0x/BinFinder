@@ -7,23 +7,58 @@
 //
 import MapKit
 import UIKit
-class ViewController: UIViewController {
+class ViewController: UIViewController, MKMapViewDelegate {
     let locationManager = CLLocationManager()
-    
+    /*
+    var showCompass : Bool
+    var showScale : Bool
+    var ShowBuildngs : Bool
+    */
     @IBOutlet weak var map: MKMapView!
     override func viewDidLoad() {
       super.viewDidLoad()
-      checkLocationServices()
-      fetchStadiumsOnMap(bins)
+      map.showsUserLocation = true
+     fetchBinsOnMap(bins)
+        map.delegate = self
         
+    
     }
+        
+        
+        
+        func mapView(_ mapView: MKMapView,
+                     didSelect view: MKAnnotationView) {
+            // Tells the delegate that one of its annotation views was selected.
+        }
+        
+       func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            if (annotation is MKUserLocation) {
+                return nil
+            }
+            
+            let reuseId = "carta"
+            
+            var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+            if anView == nil {
+                anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+                anView?.image = UIImage(named:"prova")
+                anView?.canShowCallout = true
+            }
+            else {
+                //we are re-using a view, update its annotation reference...
+                anView?.annotation = annotation
+            }
+            
+            return anView
+        }
+        
     struct Bin {
       var type: String
       var lattitude: CLLocationDegrees
       var longtitude: CLLocationDegrees
     }
     
-    let bins = [Bin(type: "carta", lattitude: 40.7723, longtitude: 14.7899),
+    let bins = [Bin(type: "Emirates Stadium", lattitude: 40.7723, longtitude: 14.7899),
                     Bin(type: "Stamford Bridge", lattitude: 51.4816, longtitude: -0.191034),
                     Bin(type: "White Hart Lane", lattitude: 51.6033, longtitude: -0.065684),
                     Bin(type: "Olympic Stadium", lattitude: 51.5383, longtitude: -0.016587),
@@ -60,13 +95,15 @@ class ViewController: UIViewController {
         }
     }
     
-    func fetchStadiumsOnMap(_ bins: [Bin]) {
+    func fetchBinsOnMap(_ bins: [Bin]) {
     for bin in bins {
-      let annotations = MKPointAnnotation()
+    let annotations = MKPointAnnotation()
       annotations.title = bin.type
       annotations.coordinate = CLLocationCoordinate2D(latitude: bin.lattitude, longitude: bin.longtitude)
       map.addAnnotation(annotations)
     }
-}
+    }
+        
+    
 
 }
