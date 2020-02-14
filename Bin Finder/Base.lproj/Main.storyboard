@@ -17,12 +17,24 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JX3-Qi-XcF">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="9Xk-HR-z01"/>
                                 </connections>
                             </mapView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kht-Ec-aX2">
-                                <rect key="frame" x="142" y="37" width="130" height="31"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdZ-BQ-0pQ">
+                                <rect key="frame" x="73" y="554" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXj-XV-X6y">
+                                <rect key="frame" x="260" y="280" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Jf0-TL-NIp">
+                                <rect key="frame" x="125" y="85" width="131" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="First"/>
                                     <segment title="Second"/>
@@ -32,18 +44,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="JX3-Qi-XcF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="0Kv-si-0Kz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yXj-XV-X6y" secondAttribute="trailing" constant="108" id="1jz-Ld-GZG"/>
                             <constraint firstItem="JX3-Qi-XcF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7GR-SJ-wPE"/>
                             <constraint firstAttribute="bottom" secondItem="JX3-Qi-XcF" secondAttribute="bottom" id="8ZZ-J3-5Jm"/>
-                            <constraint firstItem="Kht-Ec-aX2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-7" id="FjQ-4t-MJa"/>
+                            <constraint firstItem="yXj-XV-X6y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="236" id="QsP-e7-w0M"/>
+                            <constraint firstItem="yXj-XV-X6y" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="T7y-Wa-rxJ"/>
+                            <constraint firstItem="vdZ-BQ-0pQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="510" id="fNO-Hh-dXk"/>
                             <constraint firstItem="JX3-Qi-XcF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fel-tN-Wxa"/>
-                            <constraint firstItem="Kht-Ec-aX2" firstAttribute="centerX" secondItem="JX3-Qi-XcF" secondAttribute="centerX" id="t0B-1t-oQb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Kht-Ec-aX2" secondAttribute="bottom" constant="795" id="u6X-rv-R7p"/>
-                            <constraint firstItem="Kht-Ec-aX2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="142" id="zpD-ha-AdV"/>
+                            <constraint firstItem="vdZ-BQ-0pQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="73" id="geu-UM-FI9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vdZ-BQ-0pQ" secondAttribute="trailing" symbolic="YES" id="pUI-Wg-nuL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="map" destination="JX3-Qi-XcF" id="llI-ve-OdS"/>
+                        <outlet property="mapView" destination="JX3-Qi-XcF" id="Jbh-fk-PyJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -51,4 +65,5 @@
             <point key="canvasLocation" x="137.68115942028987" y="130.58035714285714"/>
         </scene>
     </scenes>
+    <color key="tintColor" systemColor="quaternarySystemFillColor" red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

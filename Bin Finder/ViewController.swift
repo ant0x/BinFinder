@@ -12,14 +12,15 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
-    var mapView: MKMapView!
+    @IBOutlet weak var mapView: MKMapView!
+    //var mapView: MKMapView!
     let locationManager = CLLocationManager()
-    
+    /*
     override func loadView() {
         mapView = MKMapView()
         view = mapView
     }
-    
+  */
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -28,6 +29,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.delegate = self
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
+        
+
     }
     
     @objc func showUserLocation(_ sender: AnyObject) {
@@ -54,6 +57,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         if authStatus == CLAuthorizationStatus.authorizedWhenInUse
             || authStatus == CLAuthorizationStatus.authorizedAlways {
             requestLocation()
+            zoomInLocation(manager.location!)
+
+            
         }
         
         print("\nEnd of locationManager(didChangeAuthorization)")
@@ -62,7 +68,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("\nStart of locationManager(didUpdateLocations)")
         
-        zoomInLocation(locations.last!)
+        //zoomInLocation(locations.last!)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -107,7 +113,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
         if anView == nil {
             anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            print("Nome della notazione \(annotation.title) ")
+            //print("Nome della notazione \(annotation.title) ")
             switch annotation.title {
             case "Paper":
                 anView?.image = UIImage(named:"prova")
