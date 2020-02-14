@@ -17,17 +17,24 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JX3-Qi-XcF">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="9Xk-HR-z01"/>
                                 </connections>
                             </mapView>
+<<<<<<< HEAD
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nd4-TU-NX9">
                                 <rect key="frame" x="343" y="128" width="51" height="47"/>
                                 <state key="normal" image="addBinPlusButton"/>
                                 <connections>
                                     <segue destination="OQG-B7-sXj" kind="showDetail" id="kHv-gs-89o"/>
                                 </connections>
+=======
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXj-XV-X6y">
+                                <rect key="frame" x="260" y="280" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+>>>>>>> a3582a0076bcd50bf52a52ae221f23f1cfe18384
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -36,9 +43,14 @@
                             <constraint firstItem="JX3-Qi-XcF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7GR-SJ-wPE"/>
                             <constraint firstItem="nd4-TU-NX9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="343" id="8Do-oQ-2ww"/>
                             <constraint firstAttribute="bottom" secondItem="JX3-Qi-XcF" secondAttribute="bottom" id="8ZZ-J3-5Jm"/>
+<<<<<<< HEAD
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nd4-TU-NX9" secondAttribute="trailing" constant="20" id="JM9-Vu-GJ7"/>
                             <constraint firstItem="nd4-TU-NX9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="84" id="KC0-cO-JxZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nd4-TU-NX9" secondAttribute="bottom" constant="687" id="N6T-L1-q7Q"/>
+=======
+                            <constraint firstItem="yXj-XV-X6y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="236" id="QsP-e7-w0M"/>
+                            <constraint firstItem="yXj-XV-X6y" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="T7y-Wa-rxJ"/>
+>>>>>>> a3582a0076bcd50bf52a52ae221f23f1cfe18384
                             <constraint firstItem="JX3-Qi-XcF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fel-tN-Wxa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
