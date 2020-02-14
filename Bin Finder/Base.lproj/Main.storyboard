@@ -17,13 +17,14 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JX3-Qi-XcF">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="9Xk-HR-z01"/>
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nd4-TU-NX9">
-                                <rect key="frame" x="343" y="128" width="51" height="47"/>
+                                <rect key="frame" x="354" y="132" width="40" height="43"/>
                                 <state key="normal" image="addBinPlusButton"/>
                                 <connections>
                                     <segue destination="OQG-B7-sXj" kind="showDetail" id="kHv-gs-89o"/>
@@ -34,12 +35,10 @@
                         <constraints>
                             <constraint firstItem="JX3-Qi-XcF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="0Kv-si-0Kz"/>
                             <constraint firstItem="JX3-Qi-XcF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7GR-SJ-wPE"/>
-                            <constraint firstItem="nd4-TU-NX9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="343" id="8Do-oQ-2ww"/>
                             <constraint firstAttribute="bottom" secondItem="JX3-Qi-XcF" secondAttribute="bottom" id="8ZZ-J3-5Jm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nd4-TU-NX9" secondAttribute="trailing" constant="20" id="JM9-Vu-GJ7"/>
-                            <constraint firstItem="nd4-TU-NX9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="84" id="KC0-cO-JxZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nd4-TU-NX9" secondAttribute="bottom" constant="687" id="N6T-L1-q7Q"/>
                             <constraint firstItem="JX3-Qi-XcF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fel-tN-Wxa"/>
+                            <constraint firstItem="nd4-TU-NX9" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="fh1-qe-gCc"/>
+                            <constraint firstItem="nd4-TU-NX9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="88" id="zGE-Qz-Cln"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -59,26 +58,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y8H-pn-Wa8">
-                                <rect key="frame" x="0.0" y="333" width="414" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8H-pn-Wa8">
+                                <rect key="frame" x="47" y="96" width="320" height="591"/>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnw-7f-eDB">
-                                <rect key="frame" x="131" y="619" width="153" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Bin" backgroundImage="rectangle.fill" catalog="system">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What kind of bin do you are spotting ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izr-Tv-TsZ">
-                                <rect key="frame" x="59" y="276" width="290" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What kind of bin do you are spotting ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izr-Tv-TsZ">
+                                <rect key="frame" x="62" y="67" width="290" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnw-7f-eDB">
+                                <rect key="frame" x="131" y="675" width="152" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="77.5" id="sov-e1-fcE"/>
+                                </constraints>
+                                <state key="normal" title="Add Bin" backgroundImage="rectangle.fill" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="pnw-7f-eDB" firstAttribute="leading" secondItem="nDs-wF-wPH" secondAttribute="leading" constant="131" id="AAT-jE-srD"/>
+                            <constraint firstItem="nDs-wF-wPH" firstAttribute="bottom" secondItem="pnw-7f-eDB" secondAttribute="bottom" constant="56.5" id="CRm-M0-hDm"/>
+                            <constraint firstItem="Izr-Tv-TsZ" firstAttribute="centerX" secondItem="y8H-pn-Wa8" secondAttribute="centerX" id="Fbi-Qu-Dnz"/>
+                            <constraint firstItem="nDs-wF-wPH" firstAttribute="bottom" secondItem="y8H-pn-Wa8" secondAttribute="bottom" constant="121" id="Qib-EV-Xyd"/>
+                            <constraint firstItem="Izr-Tv-TsZ" firstAttribute="top" secondItem="nDs-wF-wPH" secondAttribute="top" constant="67" id="U0J-2m-iGw"/>
+                            <constraint firstItem="Izr-Tv-TsZ" firstAttribute="centerX" secondItem="ooq-ag-zsH" secondAttribute="centerX" id="UPf-XW-84B"/>
+                            <constraint firstItem="y8H-pn-Wa8" firstAttribute="top" secondItem="Izr-Tv-TsZ" secondAttribute="bottom" constant="8" id="mhD-IY-Qg2"/>
+                            <constraint firstItem="y8H-pn-Wa8" firstAttribute="centerX" secondItem="pnw-7f-eDB" secondAttribute="centerX" id="msD-Rp-mFE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="nDs-wF-wPH"/>
                     </view>
                     <navigationItem key="navigationItem" id="5AU-Se-gkC"/>
@@ -88,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YGo-Zf-fPJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1008.6956521739131" y="130.58035714285714"/>
+            <point key="canvasLocation" x="1008.4821428571428" y="130.43478260869566"/>
         </scene>
     </scenes>
     <resources>

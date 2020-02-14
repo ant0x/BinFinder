@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:../Bin Finder/ScrollExamples"
+      name = "ScrollExamples">
+      <FileRef
+         location = "group:ScrollViewExampleViewController.swift">
+      </FileRef>
+      <FileRef
+         location = "group:ExampleTableViewController.swift">
+      </FileRef>
+      <FileRef
+         location = "group:TableViewExampleViewController.swift">
+      </FileRef>
+      <FileRef
+         location = "group:ScrollExample.storyboard">
+      </FileRef>
+   </Group>
    <FileRef
       location = "self:">
    </FileRef>
