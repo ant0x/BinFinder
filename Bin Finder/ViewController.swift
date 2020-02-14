@@ -16,11 +16,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     //var mapView: MKMapView!
     let locationManager = CLLocationManager()
     /*
-    override func loadView() {
-        mapView = MKMapView()
-        view = mapView
-    }
-  */
+     override func loadView() {
+     mapView = MKMapView()
+     view = mapView
+     }
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -30,7 +30,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
         
-
+        
     }
     
     @objc func showUserLocation(_ sender: AnyObject) {
@@ -58,7 +58,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             || authStatus == CLAuthorizationStatus.authorizedAlways {
             requestLocation()
             zoomInLocation(manager.location!)
-
+            
             
         }
         
@@ -131,7 +131,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 anView?.image = UIImage(named:"greenPin")
                 anView?.canShowCallout = true
             default:
-                print("err")
+                print("default")
             }
             
         }
