@@ -22,37 +22,24 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="9Xk-HR-z01"/>
                                 </connections>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdZ-BQ-0pQ">
-                                <rect key="frame" x="73" y="554" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXj-XV-X6y">
-                                <rect key="frame" x="260" y="280" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nd4-TU-NX9">
+                                <rect key="frame" x="343" y="128" width="51" height="47"/>
+                                <state key="normal" image="addBinPlusButton"/>
+                                <connections>
+                                    <segue destination="OQG-B7-sXj" kind="showDetail" id="kHv-gs-89o"/>
+                                </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Jf0-TL-NIp">
-                                <rect key="frame" x="125" y="85" width="131" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="JX3-Qi-XcF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="0Kv-si-0Kz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yXj-XV-X6y" secondAttribute="trailing" constant="108" id="1jz-Ld-GZG"/>
                             <constraint firstItem="JX3-Qi-XcF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7GR-SJ-wPE"/>
+                            <constraint firstItem="nd4-TU-NX9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="343" id="8Do-oQ-2ww"/>
                             <constraint firstAttribute="bottom" secondItem="JX3-Qi-XcF" secondAttribute="bottom" id="8ZZ-J3-5Jm"/>
-                            <constraint firstItem="yXj-XV-X6y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="236" id="QsP-e7-w0M"/>
-                            <constraint firstItem="yXj-XV-X6y" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="T7y-Wa-rxJ"/>
-                            <constraint firstItem="vdZ-BQ-0pQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="510" id="fNO-Hh-dXk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nd4-TU-NX9" secondAttribute="trailing" constant="20" id="JM9-Vu-GJ7"/>
+                            <constraint firstItem="nd4-TU-NX9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="84" id="KC0-cO-JxZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nd4-TU-NX9" secondAttribute="bottom" constant="687" id="N6T-L1-q7Q"/>
                             <constraint firstItem="JX3-Qi-XcF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fel-tN-Wxa"/>
-                            <constraint firstItem="vdZ-BQ-0pQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="73" id="geu-UM-FI9"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vdZ-BQ-0pQ" secondAttribute="trailing" symbolic="YES" id="pUI-Wg-nuL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -62,8 +49,51 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="130.58035714285714"/>
+            <point key="canvasLocation" x="20" y="131"/>
+        </scene>
+        <!--Add Bin View Controller-->
+        <scene sceneID="2YN-qg-VYo">
+            <objects>
+                <viewController id="OQG-B7-sXj" customClass="AddBinViewController" customModule="Bin_Finder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ooq-ag-zsH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y8H-pn-Wa8">
+                                <rect key="frame" x="0.0" y="333" width="414" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnw-7f-eDB">
+                                <rect key="frame" x="131" y="619" width="153" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Bin" backgroundImage="rectangle.fill" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What kind of bin do you are spotting ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izr-Tv-TsZ">
+                                <rect key="frame" x="59" y="276" width="290" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="nDs-wF-wPH"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5AU-Se-gkC"/>
+                    <connections>
+                        <outlet property="pickerView" destination="y8H-pn-Wa8" id="g3z-JE-21L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YGo-Zf-fPJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1008.6956521739131" y="130.58035714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="addBinPlusButton" width="40" height="43"/>
+        <image name="rectangle.fill" catalog="system" width="64" height="46"/>
+    </resources>
     <color key="tintColor" systemColor="quaternarySystemFillColor" red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
