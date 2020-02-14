@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F72506123F6B7EF006FF9F3 /* Bin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F72506023F6B7EF006FF9F3 /* Bin.swift */; };
 		C878918D23F2A89600E51D70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C878918C23F2A89600E51D70 /* AppDelegate.swift */; };
 		C878918F23F2A89600E51D70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C878918E23F2A89600E51D70 /* SceneDelegate.swift */; };
 		C878919123F2A89600E51D70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C878919023F2A89600E51D70 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F72506023F6B7EF006FF9F3 /* Bin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bin.swift; sourceTree = "<group>"; };
 		C80F02F323F6AD5800128381 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		C878918923F2A89600E51D70 /* Bin Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bin Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C878918C23F2A89600E51D70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				C878919A23F2A89700E51D70 /* LaunchScreen.storyboard */,
 				C878919D23F2A89700E51D70 /* Info.plist */,
 				C878919523F2A89600E51D70 /* Bin_Finder.xcdatamodeld */,
+				7F72506023F6B7EF006FF9F3 /* Bin.swift */,
 			);
 			path = "Bin Finder";
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F72506123F6B7EF006FF9F3 /* Bin.swift in Sources */,
 				C878919123F2A89600E51D70 /* ViewController.swift in Sources */,
 				C878918D23F2A89600E51D70 /* AppDelegate.swift in Sources */,
 				C878918F23F2A89600E51D70 /* SceneDelegate.swift in Sources */,
