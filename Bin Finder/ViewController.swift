@@ -107,22 +107,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
         if anView == nil {
             anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            print("Nome della notazione \(annotation.title) ")
+            //print("Nome della notazione \(annotation.title) ")
             switch annotation.title {
             case "Paper":
-                anView?.image = UIImage(named:"prova")
+                anView?.image = UIImage(named:"greenPin")
                 anView?.canShowCallout = true
             case "Glass":
-                anView?.image = UIImage(named:"img1")
+                anView?.image = UIImage(named:"lighGreenPin")
                 anView?.canShowCallout = true
             case "Plastic & Metals":
-                anView?.image = UIImage(named:"img2")
+                anView?.image = UIImage(named:"lightBluePin")
                 anView?.canShowCallout = true
             case "Mixed waste":
-                anView?.image = UIImage(named:"prova")
+                anView?.image = UIImage(named:"pinkPin")
                 anView?.canShowCallout = true
             case "Organic waste":
-                anView?.image = UIImage(named:"prova")
+                anView?.image = UIImage(named:"greenPin")
                 anView?.canShowCallout = true
             default:
                 print("err")
