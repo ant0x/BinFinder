@@ -10,4 +10,16 @@ import UIKit
 
 class Bin: NSObject {
 
+    let id: Int
+    let latitude: Double
+    let longitude: Double
+    let wasteTypes: Array<String>
+    
+    init(id: Int, latitude: Double, longitude: Double, wasteTypes: Array<String>) {
+        self.id = id
+        self.latitude = latitude
+        self.longitude = longitude
+        self.wasteTypes = wasteTypes
+    }
+    
 }
