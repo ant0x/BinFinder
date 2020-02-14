@@ -15,7 +15,6 @@
 		C878919723F2A89600E51D70 /* Bin_Finder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C878919523F2A89600E51D70 /* Bin_Finder.xcdatamodeld */; };
 		C878919923F2A89700E51D70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C878919823F2A89700E51D70 /* Assets.xcassets */; };
 		C878919C23F2A89700E51D70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C878919A23F2A89700E51D70 /* LaunchScreen.storyboard */; };
-		E688911023F6B898009E6090 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E688910F23F6B898009E6090 /* BottomSheetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +29,6 @@
 		C878919823F2A89700E51D70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C878919B23F2A89700E51D70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C878919D23F2A89700E51D70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E688910F23F6B898009E6090 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,11 +69,7 @@
 				C878919A23F2A89700E51D70 /* LaunchScreen.storyboard */,
 				C878919D23F2A89700E51D70 /* Info.plist */,
 				C878919523F2A89600E51D70 /* Bin_Finder.xcdatamodeld */,
-<<<<<<< HEAD
-				E688910F23F6B898009E6090 /* BottomSheetViewController.swift */,
-=======
 				7F72506023F6B7EF006FF9F3 /* Bin.swift */,
->>>>>>> f1fc82cb3c4de7f884d41de2657a7485194ed79f
 			);
 			path = "Bin Finder";
 			sourceTree = "<group>";
@@ -158,7 +152,6 @@
 				C878919123F2A89600E51D70 /* ViewController.swift in Sources */,
 				C878918D23F2A89600E51D70 /* AppDelegate.swift in Sources */,
 				C878918F23F2A89600E51D70 /* SceneDelegate.swift in Sources */,
-				E688911023F6B898009E6090 /* BottomSheetViewController.swift in Sources */,
 				C878919723F2A89600E51D70 /* Bin_Finder.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
