@@ -5,53 +5,119 @@
 //  Created by Antonio Baldi on 11/02/2020.
 //  Copyright © 2020 Antonio Baldi. All rights reserved.
 //
-import MapKit
 import UIKit
-class ViewController: UIViewController, MKMapViewDelegate {
-    let locationManager = CLLocationManager()
-    /*
-    var showCompass : Bool
-    var showScale : Bool
-    var ShowBuildngs : Bool
-    */
-    @IBOutlet weak var map: MKMapView!
-    override func viewDidLoad() {
-      super.viewDidLoad()
-      map.showsUserLocation = true
-     fetchBinsOnMap(bins)
-        map.delegate = self
-        
+import MapKit
+import CoreLocation
+
+
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
+    var mapView: MKMapView!
+    let locationManager = CLLocationManager()
+    
+    override func loadView() {
+        mapView = MKMapView()
+        view = mapView
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        mapView.showsUserLocation = true
+        locationManager.delegate = self
+        mapView.delegate = self
+        fetchBinsOnMap(bins)
+        showUserLocation(mapView)
+    }
+    
+    @objc func showUserLocation(_ sender: AnyObject) {
+        print("\nStart of showUserLocation()")
+        print("\nUser's location: lat=\(mapView.userLocation.coordinate.latitude), lon=\(mapView.userLocation.coordinate.longitude), title=\(mapView.userLocation.title!)")
         
         
-        
-        func mapView(_ mapView: MKMapView,
-                     didSelect view: MKAnnotationView) {
-            // Tells the delegate that one of its annotation views was selected.
+        switch CLLocationManager.authorizationStatus() {
+        case CLAuthorizationStatus.notDetermined, .restricted, .denied:
+            locationManager.requestWhenInUseAuthorization()
+        case CLAuthorizationStatus.authorizedWhenInUse, .authorizedAlways:
+            requestLocation()
+        default:
+            fatalError()
         }
         
-       func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            if (annotation is MKUserLocation) {
-                return nil
-            }
-            
-            let reuseId = "carta"
-            
-            var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
-            if anView == nil {
-                anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-                anView?.image = UIImage(named:"prova")
-                anView?.canShowCallout = true
-            }
-            else {
-                //we are re-using a view, update its annotation reference...
-                anView?.annotation = annotation
-            }
-            
-            return anView
+        print("\nEnd of showUserLocation()")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        print("\nStart of locationManager(didChangeAuthorization)")
+        
+        let authStatus = CLLocationManager.authorizationStatus()
+        if authStatus == CLAuthorizationStatus.authorizedWhenInUse
+            || authStatus == CLAuthorizationStatus.authorizedAlways {
+            requestLocation()
         }
         
+        print("\nEnd of locationManager(didChangeAuthorization)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("\nStart of locationManager(didUpdateLocations)")
+        
+        zoomInLocation(locations.last!)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        if let err = error as? CLError, err.code == .denied {
+            manager.stopUpdatingLocation()
+            return
+        }
+        print("\nlocationManager(): \(error.localizedDescription)")
+    }
+    
+    private func requestLocation() {
+        print("\requestLocation() called")
+        
+        // check if the location service is availalbe on that device
+        if !CLLocationManager.locationServicesEnabled() {
+            return
+        }
+        
+        locationManager.requestLocation()
+    }
+    
+    private func zoomInLocation(_ location: CLLocation) {
+        print("\nzoomInUserLocation(): mapView[latitude]=\(location.coordinate.latitude), locationManager[latitude]=\(String(describing: location.coordinate.latitude))")
+        let coordinateSpan = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate, span: coordinateSpan)
+        mapView.centerCoordinate = location.coordinate
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func mapView(_ mapView: MKMapView,
+                  didSelect view: MKAnnotationView) {
+         // Tells the delegate that one of its annotation views was selected.
+     }
+     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+         if (annotation is MKUserLocation) {
+             return nil
+         }
+         
+         let reuseId = "carta"
+         
+         var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+         if anView == nil {
+             anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+             anView?.image = UIImage(named:"prova")
+             anView?.canShowCallout = true
+         }
+         else {
+             //we are re-using a view, update its annotation reference...
+             anView?.annotation = annotation
+         }
+         
+         return anView
+     }
+    
     struct Bin {
       var type: String
       var lattitude: CLLocationDegrees
@@ -65,45 +131,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
                     Bin(type: "Old Trafford", lattitude: 53.4631, longtitude: -2.29139),
                     Bin(type: "Anfield", lattitude: 53.4308, longtitude: -2.96096)]
     
-    
-    
-    func checkLocationServices() {
-      if CLLocationManager.locationServicesEnabled() {
-        checkLocationAuthorization()
-      } else {
-        // Show alert letting the user know they have to turn this on.
-      }
-    }
-    
-    func checkLocationAuthorization() {
-      switch CLLocationManager.authorizationStatus() {
-      case .authorizedWhenInUse:
-        map.showsUserLocation = true
-    
-      // For these case, you need to show a pop-up telling users what's up and how to turn on permisneeded if needed
-      case .denied:
-        break
-      case .notDetermined:
-        locationManager.requestWhenInUseAuthorization()
-        map.showsUserLocation = true
-      case .restricted:
-        break
-      case .authorizedAlways:
-        break
-      @unknown default:
-        break
+
+    func fetchBinsOnMap(_ bins: [Bin]) {
+        for bin in bins {
+        let annotations = MKPointAnnotation()
+          annotations.title = bin.type
+          annotations.coordinate = CLLocationCoordinate2D(latitude: bin.lattitude, longitude: bin.longtitude)
+          mapView.addAnnotation(annotations)
         }
     }
-    
-    func fetchBinsOnMap(_ bins: [Bin]) {
-    for bin in bins {
-    let annotations = MKPointAnnotation()
-      annotations.title = bin.type
-      annotations.coordinate = CLLocationCoordinate2D(latitude: bin.lattitude, longitude: bin.longtitude)
-      map.addAnnotation(annotations)
-    }
-    }
-        
-    
-
 }
+
