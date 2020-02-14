@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import CoreLocation
 
 class Bin: NSObject {
 
     let id: Int
-    let latitude: Double
-    let longitude: Double
+    let latitude: CLLocationDegrees
+    let longitude: CLLocationDegrees
     let wasteTypes: Array<String>
     
-    init(id: Int, latitude: Double, longitude: Double, wasteTypes: Array<String>) {
+    init(id: Int, latitude: CLLocationDegrees, longitude: CLLocationDegrees, wasteTypes: Array<String>) {
         self.id = id
         self.latitude = latitude
         self.longitude = longitude
