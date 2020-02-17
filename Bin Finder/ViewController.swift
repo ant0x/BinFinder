@@ -1,4 +1,4 @@
-//
+
 //  ViewController.swift
 //  Bin Finder
 //
@@ -13,6 +13,7 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var animateShowSwitch: UISwitch!
     //var mapView: MKMapView!
     let locationManager = CLLocationManager()
     /*
@@ -29,6 +30,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.delegate = self
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
+        addPullUpController(animated: true)
+
         
         
     }
@@ -165,6 +168,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             mapView.addAnnotation(annotations)
         }
     }
+    /*
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         addBottomSheetView()
@@ -185,6 +189,33 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let width  = view.frame.width
         bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
     }
+//
+    */
+    private var originalPullUpControllerViewSize: CGSize = .zero
+
+
+     private func addPullUpController(animated: Bool) {
+         let pullUpController = makeSearchViewControllerIfNeeded()
+         _ = pullUpController.view // call pullUpController.viewDidLoad()
+         addPullUpController(pullUpController,
+                             initialStickyPointOffset: pullUpController.initialPointOffset,
+                             animated: animated)
+     }
+    
+    private func makeSearchViewControllerIfNeeded() -> SearchViewController {
+           let currentPullUpController = children
+               .filter({ $0 is SearchViewController })
+               .first as? SearchViewController
+           let pullUpController: SearchViewController = currentPullUpController ?? UIStoryboard(name: "Main",bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        pullUpController.initialState = .expanded
+        
+           if originalPullUpControllerViewSize == .zero {
+               originalPullUpControllerViewSize = pullUpController.view.bounds.size
+           }
+
+           return pullUpController
+       }
+    
     
     
 }
