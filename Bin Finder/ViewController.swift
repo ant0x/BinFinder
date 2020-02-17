@@ -38,7 +38,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.delegate = self
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
-<<<<<<< HEAD
         onIndicationRequest(sourceLocationLatitude: 40.772812, sourceLocationLongitude: 14.799443, destinationLocationLatitude: 40.7723, destinationLocationLongitude: 14.7899)
         
     }
@@ -80,10 +79,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         
         self.mapView.delegate = self
-=======
         addPullUpController(animated: true)
 
->>>>>>> 8e947140864b762503720ebb1f8b5ce936eacab1
+
     }
     
     @IBAction func addBinButton(_ sender: Any) {
