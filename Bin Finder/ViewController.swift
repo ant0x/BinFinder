@@ -114,15 +114,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func mapView(_ mapView: MKMapView,
                  didSelect view: MKAnnotationView) {
         // Tells the delegate that one of its annotation views was selected.
+        let rightButton = UIButton(type: .detailDisclosure)
+        view.rightCalloutAccessoryView = rightButton
+        
+        
+        
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+     
+        
+        
         if (annotation is MKUserLocation) {
             return nil
         }
         
         let reuseId = "carta"
-        
         var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
         if anView == nil {
             anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
