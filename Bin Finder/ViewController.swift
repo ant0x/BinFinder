@@ -13,19 +13,38 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    
+    let regionRadius: CLLocationDistance = 500
     let locationManager = CLLocationManager()
-
+    
     override func viewDidLoad() {
-       super.viewDidLoad()
+        super.viewDidLoad()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         mapView.showsUserLocation = true
         locationManager.delegate = self
         mapView.delegate = self
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
-        
+        /*
+         let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
+         centerMapOnLocation(location: initialLocation)
+         */
     }
+    
+    
+    @IBAction func centerMap(_ sender: Any) {
+        let loc = locationManager.location
+        if(loc != nil)
+        {
+            centerMapOnLocation(location: loc!)
+        }
+    }
+    
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate,
+                                                       latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
@@ -64,9 +83,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         
         self.mapView.delegate = self
-       
-
-
+        
     }
     
     @IBAction func addBinButton(_ sender: Any) {
@@ -74,7 +91,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         addBinView.lattitude = mapView.userLocation.coordinate.latitude
         addBinView.longtitude = mapView.userLocation.coordinate.longitude
     }
-        
+    
     @objc func showUserLocation(_ sender: AnyObject) {
         print("\nStart of showUserLocation()")
         print("\nUser's location: lat=\(mapView.userLocation.coordinate.latitude), lon=\(mapView.userLocation.coordinate.longitude), title=\(mapView.userLocation.title!)")
@@ -92,7 +109,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         print("\nEnd of showUserLocation()")
     }
     
-   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print("\nStart of locationManager(didChangeAuthorization)")
         
         let authStatus = CLLocationManager.authorizationStatus()
@@ -108,7 +125,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("\nStart of locationManager(didUpdateLocations)")
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-               print("locations = \(locValue.latitude) \(locValue.longitude)")
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
         //zoomInLocation(locations.last!)
     }
     
@@ -139,28 +156,49 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
+    
+   
+    @objc func route(sender: Any) {
+        //let location = view.annotation
+        
+            //let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: location!.coordinate, addressDictionary:nil))
+        
+            //mapItem.name = (view.annotation?.title)!
+            //mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
+        
+    }
+    
     func mapView(_ mapView: MKMapView,
                  didSelect view: MKAnnotationView) {
         // Tells the delegate that one of its annotation views was selected.
-        let rightButton = UIButton(type: .detailDisclosure)
-        view.rightCalloutAccessoryView = rightButton
+        // let rightButton = UIButton(type: .detailDisclosure)
+        // view.rightCalloutAccessoryView = rightButton
+        let mapsButton = UIButton(frame: CGRect(origin: CGPoint.zero,
+                                                size: CGSize(width: 40, height: 40)))
+        mapsButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: UIControl.State())
+        mapsButton.addTarget(view, action:#selector(route), for: .touchUpInside)
+        view.rightCalloutAccessoryView = mapsButton
         
         
         
     }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+    {
+        
         
         
         if (annotation is MKUserLocation) {
             return nil
         }
-        
-        let reuseId = "carta"
+        let reuseId = "paper"
         var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+        
+        
+        
         if anView == nil {
             anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            
             //print("Nome della notazione \(annotation.title) ")
             switch annotation.title {
             case "Paper":
@@ -169,6 +207,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             case "Glass":
                 anView?.image = UIImage(named:"lighGreenPin")
                 anView?.canShowCallout = true
+                
             case "Plastic & Metals":
                 anView?.image = UIImage(named:"lightBluePin")
                 anView?.canShowCallout = true
@@ -214,56 +253,65 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     /*
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        addBottomSheetView()
-    }
-    
-    //bottom sheet appear
-    func addBottomSheetView() {
-        // 1- Init bottomSheetVC
-        let bottomSheetVC = BottomSheetViewController()
-        
-        // 2- Add bottomSheetVC as a child view
-        self.addChild(bottomSheetVC)
-        self.view.addSubview(bottomSheetVC.view)
-        bottomSheetVC.didMove(toParent: self)
-        
-        // 3- Adjust bottomSheet frame and initial position.
-        let height = view.frame.height
-        let width  = view.frame.width
-        bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
-    }
-//
-    */
-    /*private var originalPullUpControllerViewSize: CGSize = .zero
-
-
-     private func addPullUpController(animated: Bool) {
-         let pullUpController = makeSearchViewControllerIfNeeded()
-         _ = pullUpController.view // call pullUpController.viewDidLoad()
-         addPullUpController(pullUpController,
-                             initialStickyPointOffset: pullUpController.initialPointOffset,
-                             animated: animated)
+     override func viewDidAppear(_ animated: Bool) {
+     super.viewDidAppear(animated)
+     addBottomSheetView()
      }
+     
+     //bottom sheet appear
+     func addBottomSheetView() {
+     // 1- Init bottomSheetVC
+     let bottomSheetVC = BottomSheetViewController()
+     
+     // 2- Add bottomSheetVC as a child view
+     self.addChild(bottomSheetVC)
+     self.view.addSubview(bottomSheetVC.view)
+     bottomSheetVC.didMove(toParent: self)
+     
+     // 3- Adjust bottomSheet frame and initial position.
+     let height = view.frame.height
+     let width  = view.frame.width
+     bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
+     }
+     //
+     */
+    /*private var originalPullUpControllerViewSize: CGSize = .zero
+     
+     
+     private func addPullUpController(animated: Bool) {
+     let pullUpController = makeSearchViewControllerIfNeeded()
+     _ = pullUpController.view // call pullUpController.viewDidLoad()
+     addPullUpController(pullUpController,
+     initialStickyPointOffset: pullUpController.initialPointOffset,
+     animated: animated)
+     }
+     
+     private func makeSearchViewControllerIfNeeded() -> SearchViewController {
+     let currentPullUpController = children
+     .filter({ $0 is SearchViewController })
+     .first as? SearchViewController
+     let pullUpController: SearchViewController = currentPullUpController ?? UIStoryboard(name: "Main",bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+     pullUpController.initialState = .expanded
+     
+     if originalPullUpControllerViewSize == .zero {
+     originalPullUpControllerViewSize = pullUpController.view.bounds.size
+     }
+     
+     return pullUpController
+     }
+     */
     
-    private func makeSearchViewControllerIfNeeded() -> SearchViewController {
-           let currentPullUpController = children
-               .filter({ $0 is SearchViewController })
-               .first as? SearchViewController
-           let pullUpController: SearchViewController = currentPullUpController ?? UIStoryboard(name: "Main",bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-        pullUpController.initialState = .expanded
+    @IBAction func prova(_ sender: Any) {
         
-           if originalPullUpControllerViewSize == .zero {
-               originalPullUpControllerViewSize = pullUpController.view.bounds.size
-           }
-
-           return pullUpController
-       }
-    */
-    
-    
-    
-    
+        //mapItem.name = annotation.title!
+        
+        
+        
+        
+        let coordinate = CLLocationCoordinate2DMake(37.2, 22.9)
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
+        mapItem.name = "Bin"
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
+    }
 }
 
