@@ -1,4 +1,4 @@
-//
+
 //  ViewController.swift
 //  Bin Finder
 //
@@ -13,6 +13,7 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var animateShowSwitch: UISwitch!
     //var mapView: MKMapView!
     let locationManager = CLLocationManager()
     /*
@@ -36,6 +37,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.delegate = self
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
+        addPullUpController(animated: true)
+
     }
     
     @IBAction func addBinButton(_ sender: Any) {
@@ -43,12 +46,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         addBinView.lattitude = mapView.userLocation.coordinate.latitude
         addBinView.longtitude = mapView.userLocation.coordinate.longitude
     }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
-    }
-    
+        
     @objc func showUserLocation(_ sender: AnyObject) {
         print("\nStart of showUserLocation()")
         print("\nUser's location: lat=\(mapView.userLocation.coordinate.latitude), lon=\(mapView.userLocation.coordinate.longitude), title=\(mapView.userLocation.title!)")
@@ -74,8 +72,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             || authStatus == CLAuthorizationStatus.authorizedAlways {
             requestLocation()
             zoomInLocation(manager.location!)
-            
-            
         }
         
         print("\nEnd of locationManager(didChangeAuthorization)")
@@ -83,7 +79,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("\nStart of locationManager(didUpdateLocations)")
-        
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+               print("locations = \(locValue.latitude) \(locValue.longitude)")
         //zoomInLocation(locations.last!)
     }
     
@@ -181,6 +178,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             mapView.addAnnotation(annotations)
         }
     }
+    /*
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         addBottomSheetView()
@@ -201,6 +199,33 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let width  = view.frame.width
         bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
     }
+//
+    */
+    private var originalPullUpControllerViewSize: CGSize = .zero
+
+
+     private func addPullUpController(animated: Bool) {
+         let pullUpController = makeSearchViewControllerIfNeeded()
+         _ = pullUpController.view // call pullUpController.viewDidLoad()
+         addPullUpController(pullUpController,
+                             initialStickyPointOffset: pullUpController.initialPointOffset,
+                             animated: animated)
+     }
+    
+    private func makeSearchViewControllerIfNeeded() -> SearchViewController {
+           let currentPullUpController = children
+               .filter({ $0 is SearchViewController })
+               .first as? SearchViewController
+           let pullUpController: SearchViewController = currentPullUpController ?? UIStoryboard(name: "Main",bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        pullUpController.initialState = .expanded
+        
+           if originalPullUpControllerViewSize == .zero {
+               originalPullUpControllerViewSize = pullUpController.view.bounds.size
+           }
+
+           return pullUpController
+       }
+    
     
     
 }
