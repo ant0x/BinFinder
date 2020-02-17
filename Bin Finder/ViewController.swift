@@ -21,13 +21,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         mapView.showsUserLocation = true
         locationManager.delegate = self
-        mapView.delegate = self
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
-        /*
-         let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
-         centerMapOnLocation(location: initialLocation)
-         */
     }
     
     
@@ -157,27 +152,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     
-   
-    @objc func route(sender: Any) {
-        //let location = view.annotation
+    
+    @objc func route(sender: cButton) {
+        let location = sender.coordinate
         
-            //let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: location!.coordinate, addressDictionary:nil))
-        
-            //mapItem.name = (view.annotation?.title)!
-            //mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: location, addressDictionary:nil))
+        mapItem.name = sender.annotation.title!
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
+        print("yoooo")
+        print(sender)
         
     }
     
     func mapView(_ mapView: MKMapView,
                  didSelect view: MKAnnotationView) {
-        // Tells the delegate that one of its annotation views was selected.
-        // let rightButton = UIButton(type: .detailDisclosure)
-        // view.rightCalloutAccessoryView = rightButton
-        let mapsButton = UIButton(frame: CGRect(origin: CGPoint.zero,
-                                                size: CGSize(width: 40, height: 40)))
-        mapsButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: UIControl.State())
-        mapsButton.addTarget(view, action:#selector(route), for: .touchUpInside)
-        view.rightCalloutAccessoryView = mapsButton
+        
+        
+        
         
         
         
@@ -185,29 +176,32 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
-        
-        
-        
         if (annotation is MKUserLocation) {
             return nil
         }
-        let reuseId = "paper"
+        let reuseId = ""
         var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
         
+        
+        
+        let mapsButton = cButton(annotation: annotation ,frame: CGRect(origin: CGPoint.zero,
+                                                                         size: CGSize(width: 40, height: 40)))
+        mapsButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: UIControl.State())
+        mapsButton.addTarget(self, action:#selector(route), for: .touchUpInside)
         
         
         if anView == nil {
             anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             
-            //print("Nome della notazione \(annotation.title) ")
+            
             switch annotation.title {
             case "Paper":
                 anView?.image = UIImage(named:"greenPin")
                 anView?.canShowCallout = true
             case "Glass":
-                anView?.image = UIImage(named:"lighGreenPin")
+                print("eeee vetro")
+                anView?.image = UIImage(named:"lightGreenPin")
                 anView?.canShowCallout = true
-                
             case "Plastic & Metals":
                 anView?.image = UIImage(named:"lightBluePin")
                 anView?.canShowCallout = true
@@ -215,18 +209,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 anView?.image = UIImage(named:"pinkPin")
                 anView?.canShowCallout = true
             case "Organic waste":
-                anView?.image = UIImage(named:"greenPin")
+                anView?.image = UIImage(named:"Maps-icon")
                 anView?.canShowCallout = true
             default:
                 print("default")
             }
-            
+            anView?.rightCalloutAccessoryView = mapsButton
         }
         else {
             //we are re-using a view, update its annotation reference...
             anView?.annotation = annotation
         }
-        
         return anView
     }
     
@@ -237,11 +230,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     let bins = [Bin(type: "Paper", lattitude: 40.7723, longtitude: 14.7899),
-                Bin(type: "Glass", lattitude: 51.4816, longtitude: -0.191034),
-                Bin(type: "Plastic & Metals", lattitude: 51.6033, longtitude: -0.065684),
-                Bin(type: "Mixed waste", lattitude: 51.5383, longtitude: -0.016587),
-                Bin(type: "Organic waste", lattitude: 53.4631, longtitude: -2.29139),
-                Bin(type: "Anfield", lattitude: 53.4308, longtitude: -2.96096)]
+                Bin(type: "Glass", lattitude: 41.7723, longtitude: 15.7899),
+                Bin(type: "Plastic & Metals", lattitude: 42.7723, longtitude: 16.7899),
+                Bin(type: "Mixed waste", lattitude: 39.7723, longtitude: 13.7899),
+                Bin(type: "Organic waste", lattitude: 43.7723, longtitude: 14.7899),
+                Bin(type: "Paper", lattitude: 40.7723, longtitude: 11.7899)]
     
     
     func fetchBinsOnMap(_ bins: [Bin]) {
@@ -249,9 +242,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             let annotations = MKPointAnnotation()
             annotations.title = bin.type
             annotations.coordinate = CLLocationCoordinate2D(latitude: bin.lattitude, longitude: bin.longtitude)
+            mapView.delegate = self
             mapView.addAnnotation(annotations)
         }
     }
+ 
     /*
      override func viewDidAppear(_ animated: Bool) {
      super.viewDidAppear(animated)
@@ -301,17 +296,5 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
      }
      */
     
-    @IBAction func prova(_ sender: Any) {
-        
-        //mapItem.name = annotation.title!
-        
-        
-        
-        
-        let coordinate = CLLocationCoordinate2DMake(37.2, 22.9)
-        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
-        mapItem.name = "Bin"
-        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
-    }
 }
 

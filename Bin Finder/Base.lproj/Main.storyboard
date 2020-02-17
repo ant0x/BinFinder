@@ -90,14 +90,6 @@
                                     <action selector="centerMap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6I0-tm-pNw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Usk-mJ-7Jt">
-                                <rect key="frame" x="143" y="579" width="78" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="prova route"/>
-                                <connections>
-                                    <action selector="prova:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kq2-jz-ejI"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
