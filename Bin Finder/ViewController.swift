@@ -13,15 +13,9 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var animateShowSwitch: UISwitch!
-    //var mapView: MKMapView!
+    
     let locationManager = CLLocationManager()
-    /*
-     override func loadView() {
-     mapView = MKMapView()
-     view = mapView
-     }
-     */
+
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -30,10 +24,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.delegate = self
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
-        addPullUpController(animated: true)
-
-        
-        
+        //addPullUpController(animated: true)
     }
     
     @IBAction func addBinButton(_ sender: Any) {
@@ -197,7 +188,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
 //
     */
-    private var originalPullUpControllerViewSize: CGSize = .zero
+    /*private var originalPullUpControllerViewSize: CGSize = .zero
 
 
      private func addPullUpController(animated: Bool) {
@@ -221,7 +212,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
            return pullUpController
        }
-    
+    */
     
     
 }
