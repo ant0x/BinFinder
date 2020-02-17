@@ -25,12 +25,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         super.viewDidLoad()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         mapView.showsUserLocation = true
-        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
         mapView.delegate = self
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
-        
-        
     }
     
     @IBAction func addBinButton(_ sender: Any) {
@@ -39,9 +44,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         addBinView.longtitude = mapView.userLocation.coordinate.longitude
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+    }
+    
     @objc func showUserLocation(_ sender: AnyObject) {
         print("\nStart of showUserLocation()")
-        print("\nUser's location: lat=\(mapView.userLocation.coordinate.latitude), lon=\(mapView.userLocation.coordinate.longitude), title=\(mapView.userLocation.title!)")			
+        print("\nUser's location: lat=\(mapView.userLocation.coordinate.latitude), lon=\(mapView.userLocation.coordinate.longitude), title=\(mapView.userLocation.title!)")
         
         
         switch CLLocationManager.authorizationStatus() {
