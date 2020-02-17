@@ -27,6 +27,7 @@
                                 <rect key="frame" x="354" y="132" width="40" height="43"/>
                                 <state key="normal" image="addBinPlusButton"/>
                                 <connections>
+                                    <action selector="addBinButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M9T-YY-nAm"/>
                                     <segue destination="OQG-B7-sXj" kind="showDetail" id="kHv-gs-89o"/>
                                 </connections>
                             </button>

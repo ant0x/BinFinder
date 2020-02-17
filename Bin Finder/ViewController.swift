@@ -33,9 +33,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
     }
     
+    @IBAction func addBinButton(_ sender: Any) {
+        let addBinView = AddBinViewController(nibName: "AddBinViewController", bundle: nil)
+        addBinView.lattitude = mapView.userLocation.coordinate.latitude
+        addBinView.longtitude = mapView.userLocation.coordinate.longitude
+    }
+    
     @objc func showUserLocation(_ sender: AnyObject) {
         print("\nStart of showUserLocation()")
-        print("\nUser's location: lat=\(mapView.userLocation.coordinate.latitude), lon=\(mapView.userLocation.coordinate.longitude), title=\(mapView.userLocation.title!)")
+        print("\nUser's location: lat=\(mapView.userLocation.coordinate.latitude), lon=\(mapView.userLocation.coordinate.longitude), title=\(mapView.userLocation.title!)")			
         
         
         switch CLLocationManager.authorizationStatus() {
