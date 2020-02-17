@@ -17,24 +17,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+       super.viewDidLoad()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         mapView.showsUserLocation = true
-        locationManager.requestAlwaysAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
-        
+        locationManager.delegate = self
         mapView.delegate = self
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
-
-        //addPullUpController(animated: true)
-
-        onIndicationRequest(sourceLocationLatitude: 40.772812, sourceLocationLongitude: 14.799443, destinationLocationLatitude: 40.7723, destinationLocationLongitude: 14.7899)
         
     }
     
