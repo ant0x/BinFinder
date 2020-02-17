@@ -13,7 +13,7 @@ import CoreLocation
 class AddBinViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate, MKMapViewDelegate{
     
     @IBOutlet weak var pickerView: UIPickerView!
-    let colors = ["Plastic","Paper","Glass","Mixed Wast","Organic Waste"]
+    let type = ["Plastic","Paper","Glass","Mixed Wast","Organic Waste"]
     var lattitude: CLLocationDegrees = 0
     var longtitude: CLLocationDegrees = 0
     
@@ -32,11 +32,11 @@ class AddBinViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return colors.count
+        return type.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return colors[row]
+        return type[row]
     }
 
 }
