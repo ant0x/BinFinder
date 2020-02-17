@@ -8,11 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F72506123F6B7EF006FF9F3 /* Bin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F72506023F6B7EF006FF9F3 /* Bin.swift */; };
-		C80F031A23F6C1F300128381 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80F031923F6C1F300128381 /* BottomSheetViewController.swift */; };
 		C80F031C23F6C20000128381 /* AddBinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80F031B23F6C20000128381 /* AddBinViewController.swift */; };
-		C857EFFA23FA8CE7009CD81A /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C857EFF923FA8CE7009CD81A /* SearchResultCell.swift */; };
-		C857F00023FA9AFB009CD81A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C857EFFF23FA9AFB009CD81A /* SearchViewController.swift */; };
-		C857F00223FA9B1D009CD81A /* PullUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C857F00123FA9B1D009CD81A /* PullUpController.swift */; };
 		C878918D23F2A89600E51D70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C878918C23F2A89600E51D70 /* AppDelegate.swift */; };
 		C878918F23F2A89600E51D70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C878918E23F2A89600E51D70 /* SceneDelegate.swift */; };
 		C878919123F2A89600E51D70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C878919023F2A89600E51D70 /* ViewController.swift */; };
@@ -25,11 +21,7 @@
 /* Begin PBXFileReference section */
 		7F72506023F6B7EF006FF9F3 /* Bin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bin.swift; sourceTree = "<group>"; };
 		C80F02F323F6AD5800128381 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		C80F031923F6C1F300128381 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		C80F031B23F6C20000128381 /* AddBinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBinViewController.swift; sourceTree = "<group>"; };
-		C857EFF923FA8CE7009CD81A /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
-		C857EFFF23FA9AFB009CD81A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		C857F00123FA9B1D009CD81A /* PullUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullUpController.swift; sourceTree = "<group>"; };
 		C878918923F2A89600E51D70 /* Bin Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bin Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C878918C23F2A89600E51D70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C878918E23F2A89600E51D70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,17 +64,13 @@
 			isa = PBXGroup;
 			children = (
 				C80F031B23F6C20000128381 /* AddBinViewController.swift */,
-				C80F031923F6C1F300128381 /* BottomSheetViewController.swift */,
 				C878918C23F2A89600E51D70 /* AppDelegate.swift */,
 				C878918E23F2A89600E51D70 /* SceneDelegate.swift */,
-				C857EFF923FA8CE7009CD81A /* SearchResultCell.swift */,
 				C878919023F2A89600E51D70 /* ViewController.swift */,
 				C878919223F2A89600E51D70 /* Main.storyboard */,
 				C878919823F2A89700E51D70 /* Assets.xcassets */,
 				C878919A23F2A89700E51D70 /* LaunchScreen.storyboard */,
 				C878919D23F2A89700E51D70 /* Info.plist */,
-				C857F00123FA9B1D009CD81A /* PullUpController.swift */,
-				C857EFFF23FA9AFB009CD81A /* SearchViewController.swift */,
 				C878919523F2A89600E51D70 /* Bin_Finder.xcdatamodeld */,
 				7F72506023F6B7EF006FF9F3 /* Bin.swift */,
 			);
@@ -164,11 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F72506123F6B7EF006FF9F3 /* Bin.swift in Sources */,
-				C80F031A23F6C1F300128381 /* BottomSheetViewController.swift in Sources */,
 				C878919123F2A89600E51D70 /* ViewController.swift in Sources */,
-				C857F00223FA9B1D009CD81A /* PullUpController.swift in Sources */,
-				C857F00023FA9AFB009CD81A /* SearchViewController.swift in Sources */,
-				C857EFFA23FA8CE7009CD81A /* SearchResultCell.swift in Sources */,
 				C878918D23F2A89600E51D70 /* AppDelegate.swift in Sources */,
 				C878918F23F2A89600E51D70 /* SceneDelegate.swift in Sources */,
 				C80F031C23F6C20000128381 /* AddBinViewController.swift in Sources */,
@@ -319,16 +303,14 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				COPY_HEADERS_RUN_UNIFDEF = YES;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = K8WJKQA676;
 				INFOPLIST_FILE = "Bin Finder/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "it.unisa.applefoundationprogram.Bin-Finder";
+				PRODUCT_BUNDLE_IDENTIFIER = it.unisa.applefoundationprogram.BinFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -341,16 +323,14 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				COPY_HEADERS_RUN_UNIFDEF = YES;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = K8WJKQA676;
 				INFOPLIST_FILE = "Bin Finder/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "it.unisa.applefoundationprogram.Bin-Finder";
+				PRODUCT_BUNDLE_IDENTIFIER = it.unisa.applefoundationprogram.BinFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -13,15 +13,9 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var animateShowSwitch: UISwitch!
-    //var mapView: MKMapView!
+    
     let locationManager = CLLocationManager()
-    /*
-     override func loadView() {
-     mapView = MKMapView()
-     view = mapView
-     }
-     */
+
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -37,7 +31,52 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.delegate = self
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
-        addPullUpController(animated: true)
+
+        //addPullUpController(animated: true)
+
+        onIndicationRequest(sourceLocationLatitude: 40.772812, sourceLocationLongitude: 14.799443, destinationLocationLatitude: 40.7723, destinationLocationLongitude: 14.7899)
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor.blue
+        return renderer
+    }
+    
+    //questa funzione deve essere chiamata quando lo user vuole indicazioni per arrivare al cestino
+    func onIndicationRequest(sourceLocationLatitude: CLLocationDegrees, sourceLocationLongitude: CLLocationDegrees, destinationLocationLatitude: CLLocationDegrees, destinationLocationLongitude: CLLocationDegrees) {
+        
+        let sourceLocation = CLLocationCoordinate2D(latitude: sourceLocationLatitude, longitude: sourceLocationLongitude)
+        
+        let destinationLocation = CLLocationCoordinate2D(latitude: destinationLocationLatitude, longitude: destinationLocationLongitude)
+        
+        let sourcePlaceMark = MKPlacemark(coordinate: sourceLocation)
+        let destinationPlaceMark = MKPlacemark(coordinate: destinationLocation)
+        let directionRequest = MKDirections.Request()
+        directionRequest.source = MKMapItem(placemark: sourcePlaceMark)
+        directionRequest.destination = MKMapItem(placemark: destinationPlaceMark)
+        directionRequest.transportType = .walking
+        
+        let directions = MKDirections(request: directionRequest)
+        
+        directions.calculate { (response, error) in
+            guard let directionResonse = response else {
+                if let error = error {
+                    print("we have error getting directions == \(error.localizedDescription)")
+                }
+                return
+            }
+            let route = directionResonse.routes[0]
+            self.mapView.addOverlay(route.polyline, level: .aboveRoads)
+            
+            let rect = route.polyline.boundingMapRect
+            self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
+        }
+        
+        self.mapView.delegate = self
+       
+
 
     }
     
@@ -64,7 +103,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         print("\nEnd of showUserLocation()")
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print("\nStart of locationManager(didChangeAuthorization)")
         
         let authStatus = CLLocationManager.authorizationStatus()
@@ -208,7 +247,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
 //
     */
-    private var originalPullUpControllerViewSize: CGSize = .zero
+    /*private var originalPullUpControllerViewSize: CGSize = .zero
 
 
      private func addPullUpController(animated: Bool) {
@@ -232,6 +271,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
            return pullUpController
        }
+    */
+    
     
     
     
