@@ -1,4 +1,4 @@
-//
+
 //  ViewController.swift
 //  Bin Finder
 //
@@ -13,6 +13,7 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var animateShowSwitch: UISwitch!
     //var mapView: MKMapView!
     let locationManager = CLLocationManager()
     var locMan = CLLocationManager()
@@ -26,10 +27,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         super.viewDidLoad()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         mapView.showsUserLocation = true
-        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
         mapView.delegate = self
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
+<<<<<<< HEAD
         onIndicationRequest(sourceLocationLatitude: 40.772812, sourceLocationLongitude: 14.799443, destinationLocationLatitude: 40.7723, destinationLocationLongitude: 14.7899)
         
     }
@@ -71,8 +80,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         
         self.mapView.delegate = self
+=======
+        addPullUpController(animated: true)
+
+>>>>>>> 8e947140864b762503720ebb1f8b5ce936eacab1
     }
     
+    @IBAction func addBinButton(_ sender: Any) {
+        let addBinView = AddBinViewController(nibName: "AddBinViewController", bundle: nil)
+        addBinView.lattitude = mapView.userLocation.coordinate.latitude
+        addBinView.longtitude = mapView.userLocation.coordinate.longitude
+    }
+        
     @objc func showUserLocation(_ sender: AnyObject) {
         print("\nStart of showUserLocation()")
         print("\nUser's location: lat=\(mapView.userLocation.coordinate.latitude), lon=\(mapView.userLocation.coordinate.longitude), title=\(mapView.userLocation.title!)")
@@ -98,8 +117,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             || authStatus == CLAuthorizationStatus.authorizedAlways {
             requestLocation()
             zoomInLocation(manager.location!)
-            
-            
         }
         
         print("\nEnd of locationManager(didChangeAuthorization)")
@@ -107,7 +124,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("\nStart of locationManager(didUpdateLocations)")
-        
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+               print("locations = \(locValue.latitude) \(locValue.longitude)")
         //zoomInLocation(locations.last!)
     }
     
@@ -205,6 +223,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             mapView.addAnnotation(annotations)
         }
     }
+    /*
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         addBottomSheetView()
@@ -225,6 +244,33 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let width  = view.frame.width
         bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
     }
+//
+    */
+    private var originalPullUpControllerViewSize: CGSize = .zero
+
+
+     private func addPullUpController(animated: Bool) {
+         let pullUpController = makeSearchViewControllerIfNeeded()
+         _ = pullUpController.view // call pullUpController.viewDidLoad()
+         addPullUpController(pullUpController,
+                             initialStickyPointOffset: pullUpController.initialPointOffset,
+                             animated: animated)
+     }
+    
+    private func makeSearchViewControllerIfNeeded() -> SearchViewController {
+           let currentPullUpController = children
+               .filter({ $0 is SearchViewController })
+               .first as? SearchViewController
+           let pullUpController: SearchViewController = currentPullUpController ?? UIStoryboard(name: "Main",bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        pullUpController.initialState = .expanded
+        
+           if originalPullUpControllerViewSize == .zero {
+               originalPullUpControllerViewSize = pullUpController.view.bounds.size
+           }
+
+           return pullUpController
+       }
+    
     
     
     

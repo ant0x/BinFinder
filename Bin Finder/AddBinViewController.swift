@@ -7,31 +7,36 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class AddBinViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class AddBinViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate, MKMapViewDelegate{
     
     @IBOutlet weak var pickerView: UIPickerView!
-    let colors = ["Plastic","Paper","Glass","Mixed Wast","Organic Waste"]
+    let type = ["Plastic","Paper","Glass","Mixed Wast","Organic Waste"]
+    var lattitude: CLLocationDegrees = 0
+    var longtitude: CLLocationDegrees = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         pickerView.delegate = self
         pickerView.dataSource = self
-    }
+        
+        print("latitudine passata -> \(lattitude)")
+        print("longitudine passata -> \(longtitude)")
     
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return colors.count
+        return type.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return colors[row]
+        return type[row]
     }
-
-    
 
 }
