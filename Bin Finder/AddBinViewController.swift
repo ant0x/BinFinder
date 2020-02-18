@@ -39,10 +39,5 @@ class AddBinViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return type[row]
     }
-    
-    
-    @IBAction func AddBin(_ sender: Any) {
-        
-    }
-    
+
 }
