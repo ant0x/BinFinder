@@ -12,6 +12,7 @@
 		7F83397723FC066900171521 /* FindBins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F83397623FC066900171521 /* FindBins.swift */; };
 		C803CE9723FB14320014D29A /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C803CE9623FB14320014D29A /* CustomButton.swift */; };
 		C80F031C23F6C20000128381 /* AddBinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80F031B23F6C20000128381 /* AddBinViewController.swift */; };
+		C82925E723FBE0180001D3F0 /* Bins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82925E623FBE0180001D3F0 /* Bins.swift */; };
 		C878918D23F2A89600E51D70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C878918C23F2A89600E51D70 /* AppDelegate.swift */; };
 		C878918F23F2A89600E51D70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C878918E23F2A89600E51D70 /* SceneDelegate.swift */; };
 		C878919123F2A89600E51D70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C878919023F2A89600E51D70 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 		C803CE9623FB14320014D29A /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		C80F02F323F6AD5800128381 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		C80F031B23F6C20000128381 /* AddBinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBinViewController.swift; sourceTree = "<group>"; };
+		C82925E623FBE0180001D3F0 /* Bins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bins.swift; sourceTree = "<group>"; };
 		C878918923F2A89600E51D70 /* Bin Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bin Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C878918C23F2A89600E51D70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C878918E23F2A89600E51D70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				C80F031B23F6C20000128381 /* AddBinViewController.swift */,
 				C878918C23F2A89600E51D70 /* AppDelegate.swift */,
 				C878918E23F2A89600E51D70 /* SceneDelegate.swift */,
+				C82925E623FBE0180001D3F0 /* Bins.swift */,
 				C803CE9623FB14320014D29A /* CustomButton.swift */,
 				C878919023F2A89600E51D70 /* ViewController.swift */,
 				C878919223F2A89600E51D70 /* Main.storyboard */,
@@ -162,6 +165,7 @@
 			files = (
 				7F83397723FC066900171521 /* FindBins.swift in Sources */,
 				7F72506123F6B7EF006FF9F3 /* Bin.swift in Sources */,
+				C82925E723FBE0180001D3F0 /* Bins.swift in Sources */,
 				C878919123F2A89600E51D70 /* ViewController.swift in Sources */,
 				C878918D23F2A89600E51D70 /* AppDelegate.swift in Sources */,
 				7F83397523FBF74600171521 /* RequestManager.swift in Sources */,
