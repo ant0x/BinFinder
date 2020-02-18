@@ -14,6 +14,7 @@ class AddBinViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @IBOutlet weak var pickerView: UIPickerView!
     let type = ["Plastic","Paper","Glass","Mixed Wast","Organic Waste"]
+    
     var lattitude: CLLocationDegrees = 0
     var longtitude: CLLocationDegrees = 0
     
