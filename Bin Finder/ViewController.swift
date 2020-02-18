@@ -29,7 +29,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
         
-        /*
+
+        
+        
         self.applyRoundCorner(plasticBtn)
         self.applyRoundCorner(paperBtn)
         self.applyRoundCorner(organicBtn)
@@ -61,7 +63,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         plasticBtn.layer.cornerRadius = 26
         plasticBtn.layer.borderWidth = 1
         plasticBtn.layer.borderColor = UIColor.black.cgColor
-        */
+        
     }
     
     
@@ -83,79 +85,89 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             let image = UIImage(named: "glassCross") as UIImage?
             self.glassBtn.setImage(image, for: .normal)
             self.glassBtn.isSelected = false
+            restrict(filter: "Glass")
         } else {
             //fai apparire qui il pin
             let image = UIImage(named: "glass") as UIImage?
             self.glassBtn.setImage(image, for: .normal)
             self.glassBtn.isSelected = true
+            grant(filter: "Glass")
         }
     }
     
     /*
-    Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
-    */
+     Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
+     */
     @IBAction func mixedClick(_ sender: Any) {
         if mixedBtn.isSelected {
             //fai sparire qui il pin
             let image = UIImage(named: "mixedCross") as UIImage?
             self.mixedBtn.setImage(image, for: .normal)
             self.mixedBtn.isSelected = false
+            restrict(filter: "Mixed waste")
         } else {
             //fai apparire qui il pin
             let image = UIImage(named: "mixed") as UIImage?
             self.mixedBtn.setImage(image, for: .normal)
             self.mixedBtn.isSelected = true
+            grant(filter: "Mixed waste")
         }
     }
     
     /*
-    Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
-    */
+     Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
+     */
     @IBAction func organicClick(_ sender: Any) {
         if organicBtn.isSelected {
-                  //fai sparire qui il pin
-                  let image = UIImage(named: "organicCross") as UIImage?
-                  self.organicBtn.setImage(image, for: .normal)
-                  self.organicBtn.isSelected = false
-              } else {
-                  //fai apparire qui il pin
-                  let image = UIImage(named: "organic") as UIImage?
-                  self.organicBtn.setImage(image, for: .normal)
-                  self.organicBtn.isSelected = true
-              }
+            //fai sparire qui il pin
+            let image = UIImage(named: "organicCross") as UIImage?
+            self.organicBtn.setImage(image, for: .normal)
+            self.organicBtn.isSelected = false
+            restrict(filter: "Organic waste")
+        } else {
+            //fai apparire qui il pin
+            let image = UIImage(named: "organic") as UIImage?
+            self.organicBtn.setImage(image, for: .normal)
+            self.organicBtn.isSelected = true
+            grant(filter: "Organic waste")
+        }
     }
     
     /*
-    Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
-    */
+     Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
+     */
     @IBAction func paperClick(_ sender: Any) {
         if paperBtn.isSelected {
-                         //fai sparire qui il pin
-                         let image = UIImage(named: "paperCross") as UIImage?
-                         self.paperBtn.setImage(image, for: .normal)
-                         self.paperBtn.isSelected = false
-                     } else {
-                         //fai apparire qui il pin
-                         let image = UIImage(named: "paper") as UIImage?
-                         self.paperBtn.setImage(image, for: .normal)
-                         self.paperBtn.isSelected = true
-                     }
+            //fai sparire qui il pin
+            let image = UIImage(named: "paperCross") as UIImage?
+            self.paperBtn.setImage(image, for: .normal)
+            self.paperBtn.isSelected = false
+            restrict(filter: "Paper")
+        } else {
+            //fai apparire qui il pin
+            let image = UIImage(named: "paper") as UIImage?
+            self.paperBtn.setImage(image, for: .normal)
+            self.paperBtn.isSelected = true
+            grant(filter: "Paper")
+        }
     }
     
     /*
-    Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
-    */
+     Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
+     */
     @IBAction func plasticClick(_ sender: Any) {
         if plasticBtn.isSelected {
             //fai sparire qui il pin
             let image = UIImage(named: "plasticCross") as UIImage?
             self.plasticBtn.setImage(image, for: .normal)
             self.plasticBtn.isSelected = false
+            restrict(filter: "Plastic & Metals")
         } else {
             //fai apparire qui il pin
             let image = UIImage(named: "plastic") as UIImage?
             self.plasticBtn.setImage(image, for: .normal)
             self.plasticBtn.isSelected = true
+            grant(filter: "Plastic & Metals")
         }
     }
     
@@ -280,19 +292,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: location, addressDictionary:nil))
         mapItem.name = sender.annotation.title!
-        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
-        print("yoooo")
-        print(sender)
-        
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeWalking])
     }
     
     func mapView(_ mapView: MKMapView,
                  didSelect view: MKAnnotationView) {
-        
-        
-        
-        
-        
         
     }
     
@@ -346,46 +350,71 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     
-
+    
     
     func fetchBinsOnMap(_ bins: [BinStruct]) {
         for annotation in mapView.annotations
         {
             mapView.removeAnnotation(annotation)
         }
- 
+        
         for bin in bins {
+            if(bin.visible)
+            {
             let annotations = MKPointAnnotation()
             annotations.title = bin.type
             annotations.coordinate = CLLocationCoordinate2D(latitude: bin.latitude, longitude: bin.longtitude)
             mapView.delegate = self
             mapView.addAnnotation(annotations)
+            }
         }
     }
     
-    let button = AddBinViewController(nibName: "AddBinViewController", bundle: nil)
     
     @IBAction func addBinButton(_ sender: Any) {
-        print(locationManager.location!.coordinate)
-        
+        //print(locationManager.location!.coordinate)
     }
-
+    
     func reload()
     {
-        print(button.isBeingDismissed)
         fetchBinsOnMap(bins)
     }
-
-    
- 
-   
-    
-
     
     func applyRoundCorner(_ object:AnyObject) {
         object.layer?.cornerRadius = object.frame.size.width / 2
         object.layer?.masksToBounds = true
     }
+    
+    func restrict(filter:String)
+    {
+        for index in 0..<bins.count
+        {
+            if(bins[index].type == filter)
+            {
+                bins[index].visible = false
+            }
+        }
+        fetchBinsOnMap(bins)
+    }
+    
+    func grant(filter:String)
+    {
+        for index in 0..<bins.count
+        {
+            if(bins[index].type == filter)
+            {
+                bins[index].visible = true
+            }
+        }
+        fetchBinsOnMap(bins)
+    }
+    
+    func checkBin()
+    {
+        
+    }
+    
+
     
 }
 

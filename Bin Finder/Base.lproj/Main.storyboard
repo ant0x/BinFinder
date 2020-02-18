@@ -130,7 +130,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="glassBtn" destination="m42-3O-gDg" id="wi7-kB-fxj"/>
+                        <outlet property="glassBtn" destination="m42-3O-gDg" id="1CB-iz-6dg"/>
                         <outlet property="mapView" destination="JX3-Qi-XcF" id="Jbh-fk-PyJ"/>
                         <outlet property="mixedBtn" destination="7uj-hJ-JOP" id="Bxb-oC-alr"/>
                         <outlet property="organicBtn" destination="y4d-Yc-IVn" id="Bh7-NE-E30"/>
@@ -215,9 +215,9 @@
     </scenes>
     <resources>
         <image name="addBinPlusButton" width="40" height="43"/>
-        <image name="glass" width="512" height="512"/>
-        <image name="mixed" width="512" height="512"/>
-        <image name="organic" width="512" height="512"/>
+        <image name="glass" width="64" height="64"/>
+        <image name="mixed" width="64" height="64"/>
+        <image name="organic" width="64" height="64"/>
         <image name="paper" width="512" height="512"/>
         <image name="paperplane.fill" catalog="system" width="64" height="60"/>
         <image name="plastic" width="512" height="512"/>

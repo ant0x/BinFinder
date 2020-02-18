@@ -12,6 +12,7 @@ public struct BinStruct {
     var type: String
     var latitude: CLLocationDegrees
     var longtitude: CLLocationDegrees
+    var visible = true
 }
 public var bins = [BinStruct(type: "Paper", latitude: 40.7723, longtitude: 14.7899),
             BinStruct(type: "Glass", latitude: 41.7723, longtitude: 15.7899),
