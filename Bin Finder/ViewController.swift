@@ -31,6 +31,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         locationManager.delegate = self
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
+  
+        
+        glassBtn.isSelected = true
+        mixedBtn.isSelected = true
+        paperBtn.isSelected = true
+        organicBtn.isSelected = true
+        plasticBtn.isSelected = true
         
         
 
@@ -55,13 +62,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func glassClick(_ sender: Any) {
         if glassBtn.isSelected {
             //fai sparire qui il pin
-            let image = UIImage(named: "glassCross") as UIImage?
+            let image = UIImage(named: "") as UIImage?
             self.glassBtn.setImage(image, for: .normal)
             self.glassBtn.isSelected = false
             restrict(filter: "Glass")
         } else {
             //fai apparire qui il pin
-            let image = UIImage(named: "glass") as UIImage?
+            let image = UIImage(named: "glassButtonSmall") as UIImage?
             self.glassBtn.setImage(image, for: .normal)
             self.glassBtn.isSelected = true
             grant(filter: "Glass")
@@ -74,13 +81,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func mixedClick(_ sender: Any) {
         if mixedBtn.isSelected {
             //fai sparire qui il pin
-            let image = UIImage(named: "mixedCross") as UIImage?
+            let image = UIImage(named: "") as UIImage?
             self.mixedBtn.setImage(image, for: .normal)
             self.mixedBtn.isSelected = false
             restrict(filter: "Mixed waste")
         } else {
             //fai apparire qui il pin
-            let image = UIImage(named: "mixed") as UIImage?
+            let image = UIImage(named: "mixedButton") as UIImage?
             self.mixedBtn.setImage(image, for: .normal)
             self.mixedBtn.isSelected = true
             grant(filter: "Mixed waste")
@@ -93,13 +100,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func organicClick(_ sender: Any) {
         if organicBtn.isSelected {
             //fai sparire qui il pin
-            let image = UIImage(named: "organicCross") as UIImage?
+            let image = UIImage(named: "") as UIImage?
             self.organicBtn.setImage(image, for: .normal)
             self.organicBtn.isSelected = false
             restrict(filter: "Organic waste")
         } else {
             //fai apparire qui il pin
-            let image = UIImage(named: "organic") as UIImage?
+            let image = UIImage(named: "organicButton") as UIImage?
             self.organicBtn.setImage(image, for: .normal)
             self.organicBtn.isSelected = true
             grant(filter: "Organic waste")
@@ -112,13 +119,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func paperClick(_ sender: Any) {
         if paperBtn.isSelected {
             //fai sparire qui il pin
-            let image = UIImage(named: "paperCross") as UIImage?
+            let image = UIImage(named: "") as UIImage?
             self.paperBtn.setImage(image, for: .normal)
             self.paperBtn.isSelected = false
             restrict(filter: "Paper")
         } else {
             //fai apparire qui il pin
-            let image = UIImage(named: "paper") as UIImage?
+            let image = UIImage(named: "paperButton") as UIImage?
             self.paperBtn.setImage(image, for: .normal)
             self.paperBtn.isSelected = true
             grant(filter: "Paper")
@@ -131,13 +138,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func plasticClick(_ sender: Any) {
         if plasticBtn.isSelected {
             //fai sparire qui il pin
-            let image = UIImage(named: "plasticCross") as UIImage?
+            let image = UIImage(named: "") as UIImage?
             self.plasticBtn.setImage(image, for: .normal)
             self.plasticBtn.isSelected = false
             restrict(filter: "Plastic & Metals")
         } else {
             //fai apparire qui il pin
-            let image = UIImage(named: "plastic") as UIImage?
+            let image = UIImage(named: "plasticButton") as UIImage?
             self.plasticBtn.setImage(image, for: .normal)
             self.plasticBtn.isSelected = true
             grant(filter: "Plastic & Metals")
