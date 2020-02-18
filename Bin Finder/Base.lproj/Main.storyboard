@@ -106,6 +106,14 @@
                                     <action selector="plasticClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pi3-5a-dIv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYU-Yy-SWI">
+                                <rect key="frame" x="184" y="565" width="47" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="PAPER"/>
+                                <connections>
+                                    <action selector="paperClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mm0-1w-NXN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -119,15 +127,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-<<<<<<< HEAD
-                        <outlet property="glassBtn" destination="m42-3O-gDg" id="1CB-iz-6dg"/>
-=======
-                        <outlet property="glassButton" destination="8K6-xj-KBA" id="yw9-52-GxM"/>
->>>>>>> 3526b0cf5de4655a168b5953890748aabecc5dcd
+                        <outlet property="glassBtn" destination="8K6-xj-KBA" id="B6m-fT-Cxk"/>
                         <outlet property="mapView" destination="JX3-Qi-XcF" id="Jbh-fk-PyJ"/>
-                        <outlet property="mixedButton" destination="f09-Ak-CYN" id="IIc-ok-TNQ"/>
-                        <outlet property="organicButton" destination="VoJ-lZ-P71" id="p46-FX-PoQ"/>
-                        <outlet property="plasticButton" destination="obK-Yz-vPk" id="BIf-Ki-w9J"/>
+                        <outlet property="mixedBtn" destination="f09-Ak-CYN" id="QIl-rQ-wde"/>
+                        <outlet property="organicBtn" destination="VoJ-lZ-P71" id="emZ-3B-pin"/>
+                        <outlet property="paperBtn" destination="gYU-Yy-SWI" id="nWn-ZX-5xb"/>
+                        <outlet property="plasticBtn" destination="obK-Yz-vPk" id="7Ub-NY-xA6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -217,16 +222,9 @@
     </scenes>
     <resources>
         <image name="addBinPlusButton" width="40" height="43"/>
-<<<<<<< HEAD
-        <image name="glass" width="64" height="64"/>
-        <image name="mixed" width="64" height="64"/>
-        <image name="organic" width="64" height="64"/>
-        <image name="paper" width="512" height="512"/>
-=======
         <image name="glassButtonSmall" width="193" height="181"/>
         <image name="mixedButton" width="193" height="181"/>
         <image name="organicButton" width="193" height="181"/>
->>>>>>> 3526b0cf5de4655a168b5953890748aabecc5dcd
         <image name="paperplane.fill" catalog="system" width="64" height="60"/>
         <image name="plasticButton" width="193" height="181"/>
         <image name="rectangle.fill" catalog="system" width="64" height="46"/>

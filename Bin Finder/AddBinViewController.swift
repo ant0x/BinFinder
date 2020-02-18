@@ -11,7 +11,8 @@ import MapKit
 import CoreLocation
 
 
-class AddBinViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, MKMapViewDelegate{
+class AddBinViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, MKMapViewDelegate
+{
     
     
     let locationManager = CLLocationManager()
