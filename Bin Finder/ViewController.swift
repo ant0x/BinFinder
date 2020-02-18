@@ -12,6 +12,11 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
+    @IBOutlet weak var plasticBtn: UIButton!
+    @IBOutlet weak var paperBtn: UIButton!
+    @IBOutlet weak var organicBtn: UIButton!
+    @IBOutlet weak var mixedBtn: UIButton!
+    @IBOutlet weak var glassBtn: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     let regionRadius: CLLocationDistance = 500
     let locationManager = CLLocationManager()
@@ -23,6 +28,39 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         locationManager.delegate = self
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
+        
+        self.applyRoundCorner(plasticBtn)
+        self.applyRoundCorner(paperBtn)
+        self.applyRoundCorner(organicBtn)
+        self.applyRoundCorner(mixedBtn)
+        self.applyRoundCorner(glassBtn)
+        
+        glassBtn.isSelected = true
+        mixedBtn.isSelected = true
+        paperBtn.isSelected = true
+        organicBtn.isSelected = true
+        plasticBtn.isSelected = true
+        
+        mixedBtn.layer.cornerRadius = 26
+        mixedBtn.layer.borderWidth = 1
+        mixedBtn.layer.borderColor = UIColor.black.cgColor
+        
+        paperBtn.layer.cornerRadius = 26
+        paperBtn.layer.borderWidth = 1
+        paperBtn.layer.borderColor = UIColor.black.cgColor
+        
+        organicBtn.layer.cornerRadius = 26
+        organicBtn.layer.borderWidth = 1
+        organicBtn.layer.borderColor = UIColor.black.cgColor
+        
+        glassBtn.layer.cornerRadius = 26
+        glassBtn.layer.borderWidth = 1
+        glassBtn.layer.borderColor = UIColor.black.cgColor
+        
+        plasticBtn.layer.cornerRadius = 26
+        plasticBtn.layer.borderWidth = 1
+        plasticBtn.layer.borderColor = UIColor.black.cgColor
+        
     }
     
     
@@ -33,6 +71,93 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             centerMapOnLocation(location: loc!)
         }
     }
+    
+    
+    /*
+     Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
+     */
+    @IBAction func glassClick(_ sender: Any) {
+        if glassBtn.isSelected {
+            //fai sparire qui il pin
+            let image = UIImage(named: "glassCross") as UIImage?
+            self.glassBtn.setImage(image, for: .normal)
+            self.glassBtn.isSelected = false
+        } else {
+            //fai apparire qui il pin
+            let image = UIImage(named: "glass") as UIImage?
+            self.glassBtn.setImage(image, for: .normal)
+            self.glassBtn.isSelected = true
+        }
+    }
+    
+    /*
+    Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
+    */
+    @IBAction func mixedClick(_ sender: Any) {
+        if mixedBtn.isSelected {
+            //fai sparire qui il pin
+            let image = UIImage(named: "mixedCross") as UIImage?
+            self.mixedBtn.setImage(image, for: .normal)
+            self.mixedBtn.isSelected = false
+        } else {
+            //fai apparire qui il pin
+            let image = UIImage(named: "mixed") as UIImage?
+            self.mixedBtn.setImage(image, for: .normal)
+            self.mixedBtn.isSelected = true
+        }
+    }
+    
+    /*
+    Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
+    */
+    @IBAction func organicClick(_ sender: Any) {
+        if organicBtn.isSelected {
+                  //fai sparire qui il pin
+                  let image = UIImage(named: "organicCross") as UIImage?
+                  self.organicBtn.setImage(image, for: .normal)
+                  self.organicBtn.isSelected = false
+              } else {
+                  //fai apparire qui il pin
+                  let image = UIImage(named: "organic") as UIImage?
+                  self.organicBtn.setImage(image, for: .normal)
+                  self.organicBtn.isSelected = true
+              }
+    }
+    
+    /*
+    Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
+    */
+    @IBAction func paperClick(_ sender: Any) {
+        if paperBtn.isSelected {
+                         //fai sparire qui il pin
+                         let image = UIImage(named: "paperCross") as UIImage?
+                         self.paperBtn.setImage(image, for: .normal)
+                         self.paperBtn.isSelected = false
+                     } else {
+                         //fai apparire qui il pin
+                         let image = UIImage(named: "paper") as UIImage?
+                         self.paperBtn.setImage(image, for: .normal)
+                         self.paperBtn.isSelected = true
+                     }
+    }
+    
+    /*
+    Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
+    */
+    @IBAction func plasticClick(_ sender: Any) {
+        if plasticBtn.isSelected {
+            //fai sparire qui il pin
+            let image = UIImage(named: "plasticCross") as UIImage?
+            self.plasticBtn.setImage(image, for: .normal)
+            self.plasticBtn.isSelected = false
+        } else {
+            //fai apparire qui il pin
+            let image = UIImage(named: "plastic") as UIImage?
+            self.plasticBtn.setImage(image, for: .normal)
+            self.plasticBtn.isSelected = true
+        }
+    }
+    
     
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate,
@@ -111,7 +236,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         if authStatus == CLAuthorizationStatus.authorizedWhenInUse
             || authStatus == CLAuthorizationStatus.authorizedAlways {
             requestLocation()
-            zoomInLocation(manager.location!)
+           // zoomInLocation(manager.location!)
         }
         
         print("\nEnd of locationManager(didChangeAuthorization)")
@@ -295,6 +420,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
      return pullUpController
      }
      */
+    
+    func applyRoundCorner(_ object:AnyObject) {
+        object.layer?.cornerRadius = object.frame.size.width / 2
+        object.layer?.masksToBounds = true
+    }
     
 }
 
