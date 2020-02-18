@@ -74,4 +74,19 @@ class FindBins: NSObject {
         task.resume()
     }
     
+    
+    func addBin(bin: Bin) {
+        // Create URL
+        let url = URL(string: "http://binfinder.altervista.org/addbin.php?latitude=\(bin.lattitude)&longitude=\(bin.longtitude)&type=\(bin.type)")
+        guard let requestUrl = url else { fatalError() }
+        // Create URL Request
+        var request = URLRequest(url: requestUrl)
+        // Specify HTTP Method to use
+        request.httpMethod = "GET"
+        // Send HTTP Request
+        
+        let task = URLSession.shared.dataTask(with: request)
+        task.resume()
+    }
+    
 }
