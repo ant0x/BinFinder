@@ -81,11 +81,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
     }
     
-    @IBAction func addBinButton(_ sender: Any) {
-        let addBinView = AddBinViewController(nibName: "AddBinViewController", bundle: nil)
-        addBinView.lattitude = mapView.userLocation.coordinate.latitude
-        addBinView.longtitude = mapView.userLocation.coordinate.longitude
-    }
+    
     
     @objc func showUserLocation(_ sender: AnyObject) {
         print("\nStart of showUserLocation()")
@@ -185,7 +181,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         
         let mapsButton = cButton(annotation: annotation ,frame: CGRect(origin: CGPoint.zero,
-                                                                         size: CGSize(width: 40, height: 40)))
+                                                                       size: CGSize(width: 40, height: 40)))
         mapsButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: UIControl.State())
         mapsButton.addTarget(self, action:#selector(route), for: .touchUpInside)
         
@@ -223,78 +219,42 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return anView
     }
     
-    struct Bin {
-        var type: String
-        var lattitude: CLLocationDegrees
-        var longtitude: CLLocationDegrees
-    }
     
-    let bins = [Bin(type: "Paper", lattitude: 40.7723, longtitude: 14.7899),
-                Bin(type: "Glass", lattitude: 41.7723, longtitude: 15.7899),
-                Bin(type: "Plastic & Metals", lattitude: 42.7723, longtitude: 16.7899),
-                Bin(type: "Mixed waste", lattitude: 39.7723, longtitude: 13.7899),
-                Bin(type: "Organic waste", lattitude: 43.7723, longtitude: 14.7899),
-                Bin(type: "Paper", lattitude: 40.7723, longtitude: 11.7899)]
+
     
-    
-    func fetchBinsOnMap(_ bins: [Bin]) {
+    func fetchBinsOnMap(_ bins: [BinStruct]) {
+        for annotation in mapView.annotations
+        {
+            mapView.removeAnnotation(annotation)
+        }
+ 
         for bin in bins {
             let annotations = MKPointAnnotation()
             annotations.title = bin.type
-            annotations.coordinate = CLLocationCoordinate2D(latitude: bin.lattitude, longitude: bin.longtitude)
+            annotations.coordinate = CLLocationCoordinate2D(latitude: bin.latitude, longitude: bin.longtitude)
             mapView.delegate = self
             mapView.addAnnotation(annotations)
         }
     }
+    
+    let button = AddBinViewController(nibName: "AddBinViewController", bundle: nil)
+    
+    @IBAction func addBinButton(_ sender: Any) {
+        print(locationManager.location!.coordinate)
+        
+    }
+
+    func reload()
+    {
+        print(button.isBeingDismissed)
+        fetchBinsOnMap(bins)
+    }
+
+    
  
-    /*
-     override func viewDidAppear(_ animated: Bool) {
-     super.viewDidAppear(animated)
-     addBottomSheetView()
-     }
-     
-     //bottom sheet appear
-     func addBottomSheetView() {
-     // 1- Init bottomSheetVC
-     let bottomSheetVC = BottomSheetViewController()
-     
-     // 2- Add bottomSheetVC as a child view
-     self.addChild(bottomSheetVC)
-     self.view.addSubview(bottomSheetVC.view)
-     bottomSheetVC.didMove(toParent: self)
-     
-     // 3- Adjust bottomSheet frame and initial position.
-     let height = view.frame.height
-     let width  = view.frame.width
-     bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
-     }
-     //
-     */
-    /*private var originalPullUpControllerViewSize: CGSize = .zero
-     
-     
-     private func addPullUpController(animated: Bool) {
-     let pullUpController = makeSearchViewControllerIfNeeded()
-     _ = pullUpController.view // call pullUpController.viewDidLoad()
-     addPullUpController(pullUpController,
-     initialStickyPointOffset: pullUpController.initialPointOffset,
-     animated: animated)
-     }
-     
-     private func makeSearchViewControllerIfNeeded() -> SearchViewController {
-     let currentPullUpController = children
-     .filter({ $0 is SearchViewController })
-     .first as? SearchViewController
-     let pullUpController: SearchViewController = currentPullUpController ?? UIStoryboard(name: "Main",bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-     pullUpController.initialState = .expanded
-     
-     if originalPullUpControllerViewSize == .zero {
-     originalPullUpControllerViewSize = pullUpController.view.bounds.size
-     }
-     
-     return pullUpController
-     }
-     */
+   
+    
+
     
 }
 

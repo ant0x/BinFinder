@@ -136,6 +136,10 @@
                                 <state key="normal" title="Add Bin" backgroundImage="rectangle.fill" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="addBin:" destination="OQG-B7-sXj" eventType="touchUpInside" id="8Da-R2-QnX"/>
+                                    <action selector="ending:" destination="eBn-wd-axa" eventType="editingDidEnd" id="tb6-9e-fVj"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -157,6 +161,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YGo-Zf-fPJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="eBn-wd-axa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1008.4821428571428" y="130.43478260869566"/>
         </scene>
