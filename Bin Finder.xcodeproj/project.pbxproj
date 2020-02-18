@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7F72506123F6B7EF006FF9F3 /* Bin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F72506023F6B7EF006FF9F3 /* Bin.swift */; };
 		7F83397523FBF74600171521 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F83397423FBF74600171521 /* RequestManager.swift */; };
+		7F83397723FC066900171521 /* FindBins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F83397623FC066900171521 /* FindBins.swift */; };
 		C803CE9723FB14320014D29A /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C803CE9623FB14320014D29A /* CustomButton.swift */; };
 		C80F031C23F6C20000128381 /* AddBinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80F031B23F6C20000128381 /* AddBinViewController.swift */; };
 		C82925E723FBE0180001D3F0 /* Bins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82925E623FBE0180001D3F0 /* Bins.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		7F72506023F6B7EF006FF9F3 /* Bin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bin.swift; sourceTree = "<group>"; };
 		7F83397423FBF74600171521 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		7F83397623FC066900171521 /* FindBins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindBins.swift; sourceTree = "<group>"; };
 		C803CE9623FB14320014D29A /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		C80F02F323F6AD5800128381 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		C80F031B23F6C20000128381 /* AddBinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBinViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				C878919523F2A89600E51D70 /* Bin_Finder.xcdatamodeld */,
 				7F72506023F6B7EF006FF9F3 /* Bin.swift */,
 				7F83397423FBF74600171521 /* RequestManager.swift */,
+				7F83397623FC066900171521 /* FindBins.swift */,
 			);
 			path = "Bin Finder";
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F83397723FC066900171521 /* FindBins.swift in Sources */,
 				7F72506123F6B7EF006FF9F3 /* Bin.swift in Sources */,
 				C82925E723FBE0180001D3F0 /* Bins.swift in Sources */,
 				C878919123F2A89600E51D70 /* ViewController.swift in Sources */,

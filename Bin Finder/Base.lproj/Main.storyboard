@@ -38,18 +38,6 @@
                                     <segue destination="OQG-B7-sXj" kind="showDetail" id="kHv-gs-89o"/>
                                 </connections>
                             </button>
-                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uj-hJ-JOP">
-                                <rect key="frame" x="97" y="757" width="65" height="83"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.6588235294117647" green="0.81960784313725488" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" backgroundImage="mixed">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
-                                </state>
-                                <connections>
-                                    <action selector="mixedClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XEJ-Ia-6WC"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJj-Ks-WxD">
                                 <rect key="frame" x="20" y="726" width="84" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -58,30 +46,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4d-Yc-IVn">
-                                <rect key="frame" x="173" y="757" width="65" height="83"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocv-zq-wlB">
+                                <rect key="frame" x="352" y="726" width="44" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.88627450980392153" green="0.69411764705882351" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" backgroundImage="organic">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
-                                </state>
-                                <connections>
-                                    <action selector="organicClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2ir-P9-Czc"/>
-                                </connections>
-                            </button>
-                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRB-EI-6VA">
-                                <rect key="frame" x="329" y="757" width="65" height="83"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.74117647058823533" green="0.84313725490196079" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" backgroundImage="plastic">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
-                                </state>
-                                <connections>
-                                    <action selector="plasticClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cO9-lX-4WJ"/>
-                                </connections>
-                            </button>
+                                <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfu-EA-8mU">
                                 <rect key="frame" x="354" y="81" width="40" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -94,27 +66,44 @@
                                     <action selector="centerMap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6I0-tm-pNw"/>
                                 </connections>
                             </button>
-                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m42-3O-gDg">
-                                <rect key="frame" x="20" y="757" width="65" height="83"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8K6-xj-KBA">
+                                <rect key="frame" x="11" y="755" width="92" height="86"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99607843139999996" green="0.85490196080000003" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" backgroundImage="glass">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
+                                <state key="normal" image="glassButtonSmall">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="1" scale="small"/>
                                 </state>
                                 <connections>
-                                    <action selector="glassClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AcB-oc-Wsv"/>
+                                    <action selector="glassClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RSu-qH-nrd"/>
                                 </connections>
                             </button>
-                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3E-Re-fJG">
-                                <rect key="frame" x="251" y="757" width="65" height="83"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VoJ-lZ-P71">
+                                <rect key="frame" x="109" y="755" width="92" height="86"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.74901960784313726" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" backgroundImage="paper">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
+                                <state key="normal" image="organicButton">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="1" scale="small"/>
                                 </state>
                                 <connections>
-                                    <action selector="paperClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cpN-qk-uKF"/>
+                                    <action selector="organicClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EUs-UK-Gt3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f09-Ak-CYN">
+                                <rect key="frame" x="205" y="755" width="92" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="mixedButton">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="1" scale="small"/>
+                                </state>
+                                <connections>
+                                    <action selector="mixedClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Spj-R3-Mlq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obK-Yz-vPk">
+                                <rect key="frame" x="304" y="756" width="92" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="plasticButton">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="1" scale="small"/>
+                                </state>
+                                <connections>
+                                    <action selector="plasticClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pi3-5a-dIv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -130,12 +119,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+<<<<<<< HEAD
                         <outlet property="glassBtn" destination="m42-3O-gDg" id="1CB-iz-6dg"/>
+=======
+                        <outlet property="glassButton" destination="8K6-xj-KBA" id="yw9-52-GxM"/>
+>>>>>>> 3526b0cf5de4655a168b5953890748aabecc5dcd
                         <outlet property="mapView" destination="JX3-Qi-XcF" id="Jbh-fk-PyJ"/>
-                        <outlet property="mixedBtn" destination="7uj-hJ-JOP" id="Bxb-oC-alr"/>
-                        <outlet property="organicBtn" destination="y4d-Yc-IVn" id="Bh7-NE-E30"/>
-                        <outlet property="paperBtn" destination="T3E-Re-fJG" id="eA0-rJ-pX7"/>
-                        <outlet property="plasticBtn" destination="qRB-EI-6VA" id="aLM-Sk-opp"/>
+                        <outlet property="mixedButton" destination="f09-Ak-CYN" id="IIc-ok-TNQ"/>
+                        <outlet property="organicButton" destination="VoJ-lZ-P71" id="p46-FX-PoQ"/>
+                        <outlet property="plasticButton" destination="obK-Yz-vPk" id="BIf-Ki-w9J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -173,6 +165,16 @@
                                     <action selector="ending:" destination="eBn-wd-axa" eventType="editingDidEnd" id="tb6-9e-fVj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBB-eJ-NyL">
+                                <rect key="frame" x="183" y="759" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchCancelOperation:" destination="OQG-B7-sXj" eventType="touchUpInside" id="eBA-1v-dq3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -195,7 +197,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YGo-Zf-fPJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="eBn-wd-axa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1008.4821428571428" y="130.43478260869566"/>
+            <point key="canvasLocation" x="1007.2463768115942" y="129.91071428571428"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Pr0-Ov-sEX">
@@ -215,12 +217,18 @@
     </scenes>
     <resources>
         <image name="addBinPlusButton" width="40" height="43"/>
+<<<<<<< HEAD
         <image name="glass" width="64" height="64"/>
         <image name="mixed" width="64" height="64"/>
         <image name="organic" width="64" height="64"/>
         <image name="paper" width="512" height="512"/>
+=======
+        <image name="glassButtonSmall" width="193" height="181"/>
+        <image name="mixedButton" width="193" height="181"/>
+        <image name="organicButton" width="193" height="181"/>
+>>>>>>> 3526b0cf5de4655a168b5953890748aabecc5dcd
         <image name="paperplane.fill" catalog="system" width="64" height="60"/>
-        <image name="plastic" width="512" height="512"/>
+        <image name="plasticButton" width="193" height="181"/>
         <image name="rectangle.fill" catalog="system" width="64" height="46"/>
     </resources>
     <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
