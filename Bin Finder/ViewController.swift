@@ -196,20 +196,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
             switch annotation.title {
             case "Paper":
-                anView?.image = UIImage(named:"greenPin")
+                anView?.image = UIImage(named:"paper")
                 anView?.canShowCallout = true
             case "Glass":
                 print("eeee vetro")
-                anView?.image = UIImage(named:"lightGreenPin")
+                anView?.image = UIImage(named:"glass")
                 anView?.canShowCallout = true
             case "Plastic & Metals":
-                anView?.image = UIImage(named:"lightBluePin")
+                anView?.image = UIImage(named:"plastic")
                 anView?.canShowCallout = true
             case "Mixed waste":
-                anView?.image = UIImage(named:"pinkPin")
+                anView?.image = UIImage(named:"mixed")
                 anView?.canShowCallout = true
             case "Organic waste":
-                anView?.image = UIImage(named:"Maps-icon")
+                anView?.image = UIImage(named:"organic")
                 anView?.canShowCallout = true
             default:
                 print("default")
