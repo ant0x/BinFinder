@@ -29,6 +29,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
         
+        /*
         self.applyRoundCorner(plasticBtn)
         self.applyRoundCorner(paperBtn)
         self.applyRoundCorner(organicBtn)
@@ -60,7 +61,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         plasticBtn.layer.cornerRadius = 26
         plasticBtn.layer.borderWidth = 1
         plasticBtn.layer.borderColor = UIColor.black.cgColor
-        
+        */
     }
     
     
@@ -232,7 +233,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         if authStatus == CLAuthorizationStatus.authorizedWhenInUse
             || authStatus == CLAuthorizationStatus.authorizedAlways {
             requestLocation()
-           // zoomInLocation(manager.location!)
+            zoomInLocation(manager.location!)
         }
         
         print("\nEnd of locationManager(didChangeAuthorization)")
