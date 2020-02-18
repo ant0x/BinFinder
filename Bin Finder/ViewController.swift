@@ -47,39 +47,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return renderer
     }
     
-    //questa funzione deve essere chiamata quando lo user vuole indicazioni per arrivare al cestino
-    func onIndicationRequest(sourceLocationLatitude: CLLocationDegrees, sourceLocationLongitude: CLLocationDegrees, destinationLocationLatitude: CLLocationDegrees, destinationLocationLongitude: CLLocationDegrees) {
-        
-        let sourceLocation = CLLocationCoordinate2D(latitude: sourceLocationLatitude, longitude: sourceLocationLongitude)
-        
-        let destinationLocation = CLLocationCoordinate2D(latitude: destinationLocationLatitude, longitude: destinationLocationLongitude)
-        
-        let sourcePlaceMark = MKPlacemark(coordinate: sourceLocation)
-        let destinationPlaceMark = MKPlacemark(coordinate: destinationLocation)
-        let directionRequest = MKDirections.Request()
-        directionRequest.source = MKMapItem(placemark: sourcePlaceMark)
-        directionRequest.destination = MKMapItem(placemark: destinationPlaceMark)
-        directionRequest.transportType = .walking
-        
-        let directions = MKDirections(request: directionRequest)
-        
-        directions.calculate { (response, error) in
-            guard let directionResonse = response else {
-                if let error = error {
-                    print("we have error getting directions == \(error.localizedDescription)")
-                }
-                return
-            }
-            let route = directionResonse.routes[0]
-            self.mapView.addOverlay(route.polyline, level: .aboveRoads)
-            
-            let rect = route.polyline.boundingMapRect
-            self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
-        }
-        
-        self.mapView.delegate = self
-        
-    }
+    
     
     @IBAction func addBinButton(_ sender: Any) {
         let addBinView = AddBinViewController(nibName: "AddBinViewController", bundle: nil)
@@ -159,17 +127,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: location, addressDictionary:nil))
         mapItem.name = sender.annotation.title!
         mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
-        print("yoooo")
-        print(sender)
         
     }
     
     func mapView(_ mapView: MKMapView,
                  didSelect view: MKAnnotationView) {
-        
-        
-        
-        
         
         
     }
@@ -225,76 +187,33 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     struct Bin {
         var type: String
-        var lattitude: CLLocationDegrees
+        var latitude: CLLocationDegrees
         var longtitude: CLLocationDegrees
     }
     
-    let bins = [Bin(type: "Paper", lattitude: 40.7723, longtitude: 14.7899),
-                Bin(type: "Glass", lattitude: 41.7723, longtitude: 15.7899),
-                Bin(type: "Plastic & Metals", lattitude: 42.7723, longtitude: 16.7899),
-                Bin(type: "Mixed waste", lattitude: 39.7723, longtitude: 13.7899),
-                Bin(type: "Organic waste", lattitude: 43.7723, longtitude: 14.7899),
-                Bin(type: "Paper", lattitude: 40.7723, longtitude: 11.7899)]
+    var bins = [Bin(type: "Paper", latitude: 40.7723, longtitude: 14.7899),
+                Bin(type: "Glass", latitude: 41.7723, longtitude: 15.7899),
+                Bin(type: "Plastic & Metals", latitude: 42.7723, longtitude: 16.7899),
+                Bin(type: "Mixed waste", latitude: 39.7723, longtitude: 13.7899),
+                Bin(type: "Organic waste", latitude: 43.7723, longtitude: 14.7899),
+                Bin(type: "Paper", latitude: 40.7723, longtitude: 11.7899)]
     
     
     func fetchBinsOnMap(_ bins: [Bin]) {
         for bin in bins {
             let annotations = MKPointAnnotation()
             annotations.title = bin.type
-            annotations.coordinate = CLLocationCoordinate2D(latitude: bin.lattitude, longitude: bin.longtitude)
+            annotations.coordinate = CLLocationCoordinate2D(latitude: bin.latitude, longitude: bin.longtitude)
             mapView.delegate = self
             mapView.addAnnotation(annotations)
         }
     }
  
-    /*
-     override func viewDidAppear(_ animated: Bool) {
-     super.viewDidAppear(animated)
-     addBottomSheetView()
-     }
-     
-     //bottom sheet appear
-     func addBottomSheetView() {
-     // 1- Init bottomSheetVC
-     let bottomSheetVC = BottomSheetViewController()
-     
-     // 2- Add bottomSheetVC as a child view
-     self.addChild(bottomSheetVC)
-     self.view.addSubview(bottomSheetVC.view)
-     bottomSheetVC.didMove(toParent: self)
-     
-     // 3- Adjust bottomSheet frame and initial position.
-     let height = view.frame.height
-     let width  = view.frame.width
-     bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
-     }
-     //
-     */
-    /*private var originalPullUpControllerViewSize: CGSize = .zero
-     
-     
-     private func addPullUpController(animated: Bool) {
-     let pullUpController = makeSearchViewControllerIfNeeded()
-     _ = pullUpController.view // call pullUpController.viewDidLoad()
-     addPullUpController(pullUpController,
-     initialStickyPointOffset: pullUpController.initialPointOffset,
-     animated: animated)
-     }
-     
-     private func makeSearchViewControllerIfNeeded() -> SearchViewController {
-     let currentPullUpController = children
-     .filter({ $0 is SearchViewController })
-     .first as? SearchViewController
-     let pullUpController: SearchViewController = currentPullUpController ?? UIStoryboard(name: "Main",bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-     pullUpController.initialState = .expanded
-     
-     if originalPullUpControllerViewSize == .zero {
-     originalPullUpControllerViewSize = pullUpController.view.bounds.size
-     }
-     
-     return pullUpController
-     }
-     */
+    
+    
+    
+    
+    
     
 }
 

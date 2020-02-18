@@ -23,9 +23,8 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="9Xk-HR-z01"/>
                                 </connections>
                             </mapView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sBq-5p-zkM">
-                                <rect key="frame" x="0.0" y="719" width="414" height="177"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBq-5p-zkM">
+                                <rect key="frame" x="0.0" y="755" width="414" height="141"/>
                                 <connections>
                                     <segue destination="OTq-0q-geF" kind="embed" id="0na-fV-Yn3"/>
                                 </connections>
@@ -38,67 +37,56 @@
                                     <segue destination="OQG-B7-sXj" kind="showDetail" id="kHv-gs-89o"/>
                                 </connections>
                             </button>
-                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m42-3O-gDg">
-                                <rect key="frame" x="20" y="755.5" width="91" height="83"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" backgroundImage="trash.circle.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
-                                </state>
-                            </button>
-                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uj-hJ-JOP">
-                                <rect key="frame" x="114" y="755.5" width="91" height="83"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" backgroundImage="trash.circle.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJj-Ks-WxD">
-                                <rect key="frame" x="20" y="726" width="84" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4d-Yc-IVn">
-                                <rect key="frame" x="206" y="756.5" width="91" height="83"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" backgroundImage="trash.circle.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
-                                </state>
-                            </button>
-                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3E-Re-fJG">
-                                <rect key="frame" x="296" y="756" width="91" height="83"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" backgroundImage="trash.circle.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfu-EA-8mU">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfu-EA-8mU">
                                 <rect key="frame" x="354" y="81" width="40" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="iEn-L7-74C"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <state key="normal" title="" image="paperplane.fill" catalog="system">
+                                <state key="normal" image="location.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="39" scale="small" weight="ultraLight"/>
                                 </state>
                                 <connections>
                                     <action selector="centerMap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6I0-tm-pNw"/>
                                 </connections>
                             </button>
+                            <button contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m42-3O-gDg">
+                                <rect key="frame" x="20" y="796.5" width="61" height="56"/>
+                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" backgroundImage="trash.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJj-Ks-WxD">
+                                <rect key="frame" x="20" y="767" width="84" height="21"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="JX3-Qi-XcF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="0Kv-si-0Kz"/>
-                            <constraint firstItem="JX3-Qi-XcF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7GR-SJ-wPE"/>
-                            <constraint firstAttribute="bottom" secondItem="JX3-Qi-XcF" secondAttribute="bottom" id="8ZZ-J3-5Jm"/>
-                            <constraint firstItem="JX3-Qi-XcF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fel-tN-Wxa"/>
-                            <constraint firstItem="nd4-TU-NX9" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="fh1-qe-gCc"/>
-                            <constraint firstItem="nd4-TU-NX9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="88" id="zGE-Qz-Cln"/>
+                            <constraint firstItem="JX3-Qi-XcF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-44" id="09D-Yp-dt3"/>
+                            <constraint firstItem="JX3-Qi-XcF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="09v-9n-bhu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="m42-3O-gDg" secondAttribute="bottom" constant="37" id="8Ht-3F-ZwC"/>
+                            <constraint firstItem="m42-3O-gDg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="724" id="DZ4-gM-a02"/>
+                            <constraint firstItem="JX3-Qi-XcF" firstAttribute="leading" secondItem="sBq-5p-zkM" secondAttribute="leading" id="Dgk-zh-VEG"/>
+                            <constraint firstItem="sBq-5p-zkM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="755" id="FAG-5u-DId"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m42-3O-gDg" secondAttribute="trailing" constant="340" id="GHa-JH-Z55"/>
+                            <constraint firstItem="JX3-Qi-XcF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="H7Z-1Q-zHN"/>
+                            <constraint firstItem="JX3-Qi-XcF" firstAttribute="bottom" secondItem="sBq-5p-zkM" secondAttribute="bottom" id="R0Q-DI-QDo"/>
+                            <constraint firstItem="m42-3O-gDg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="13" id="SwB-cQ-ZPi"/>
+                            <constraint firstItem="zJj-Ks-WxD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="704" id="V7P-as-e7U"/>
+                            <constraint firstItem="sfu-EA-8mU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="37" id="c0k-Hy-5gc"/>
+                            <constraint firstItem="nd4-TU-NX9" firstAttribute="top" secondItem="sfu-EA-8mU" secondAttribute="bottom" constant="8" id="d22-zv-vOo"/>
+                            <constraint firstItem="sfu-EA-8mU" firstAttribute="leading" secondItem="nd4-TU-NX9" secondAttribute="leading" id="ldC-vu-vFi"/>
+                            <constraint firstItem="sfu-EA-8mU" firstAttribute="trailing" secondItem="nd4-TU-NX9" secondAttribute="trailing" id="oUx-Xy-puf"/>
+                            <constraint firstItem="zJj-Ks-WxD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ouL-ze-u3a"/>
+                            <constraint firstItem="JX3-Qi-XcF" firstAttribute="trailing" secondItem="sBq-5p-zkM" secondAttribute="trailing" id="voh-Oi-twP"/>
+                            <constraint firstItem="sBq-5p-zkM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="w2C-tM-9Ti"/>
+                            <constraint firstItem="sfu-EA-8mU" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="xsc-EQ-i7Z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -135,6 +123,10 @@
                                 <state key="normal" title="Add Bin" backgroundImage="rectangle.fill" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="AddBin:" destination="voU-oa-Qup" eventType="touchUpInside" id="6VU-zg-jPO"/>
+                                    <action selector="AddBin:" destination="OQG-B7-sXj" eventType="touchUpInside" id="7ql-5g-wik"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -152,32 +144,34 @@
                     </view>
                     <navigationItem key="navigationItem" id="5AU-Se-gkC"/>
                     <connections>
+                        <outlet property="AddBin" destination="y8H-pn-Wa8" id="lrX-nn-Jrx"/>
                         <outlet property="pickerView" destination="y8H-pn-Wa8" id="g3z-JE-21L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YGo-Zf-fPJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="voU-oa-Qup" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1008.4821428571428" y="130.43478260869566"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Pr0-Ov-sEX">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a4n-g4-YgP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="OTq-0q-geF" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ngw-EU-b92">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="177"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="141"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Jvg-Zh-P19"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a4n-g4-YgP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="199" y="518"/>
         </scene>
     </scenes>
     <resources>
         <image name="addBinPlusButton" width="40" height="43"/>
-        <image name="paperplane.fill" catalog="system" width="64" height="60"/>
+        <image name="location.fill" catalog="system" width="64" height="56"/>
         <image name="rectangle.fill" catalog="system" width="64" height="46"/>
         <image name="trash.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
