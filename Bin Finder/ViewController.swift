@@ -12,12 +12,14 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
-    @IBOutlet weak var plasticBtn: UIButton!
-    @IBOutlet weak var paperBtn: UIButton!
-    @IBOutlet weak var organicBtn: UIButton!
-    @IBOutlet weak var mixedBtn: UIButton!
-    @IBOutlet weak var glassBtn: UIButton!
+    @IBOutlet weak var glassButton: UIButton!
+    @IBOutlet weak var organicButton: UIButton!
+    @IBOutlet weak var mixedButton: UIButton!
+    @IBOutlet weak var plasticButton: UIButton!
+    
     @IBOutlet weak var mapView: MKMapView!
+    
+    
     let regionRadius: CLLocationDistance = 500
     let locationManager = CLLocationManager()
     
@@ -28,40 +30,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         locationManager.delegate = self
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
-        
-        /*
-        self.applyRoundCorner(plasticBtn)
-        self.applyRoundCorner(paperBtn)
-        self.applyRoundCorner(organicBtn)
-        self.applyRoundCorner(mixedBtn)
-        self.applyRoundCorner(glassBtn)
-        
-        glassBtn.isSelected = true
-        mixedBtn.isSelected = true
-        paperBtn.isSelected = true
-        organicBtn.isSelected = true
-        plasticBtn.isSelected = true
-        
-        mixedBtn.layer.cornerRadius = 26
-        mixedBtn.layer.borderWidth = 1
-        mixedBtn.layer.borderColor = UIColor.black.cgColor
-        
-        paperBtn.layer.cornerRadius = 26
-        paperBtn.layer.borderWidth = 1
-        paperBtn.layer.borderColor = UIColor.black.cgColor
-        
-        organicBtn.layer.cornerRadius = 26
-        organicBtn.layer.borderWidth = 1
-        organicBtn.layer.borderColor = UIColor.black.cgColor
-        
-        glassBtn.layer.cornerRadius = 26
-        glassBtn.layer.borderWidth = 1
-        glassBtn.layer.borderColor = UIColor.black.cgColor
-        
-        plasticBtn.layer.cornerRadius = 26
-        plasticBtn.layer.borderWidth = 1
-        plasticBtn.layer.borderColor = UIColor.black.cgColor
-        */
     }
     
     
@@ -76,18 +44,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     /*
      Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
+     
+     ****
+     SU ESEMPIO DI QUESTO METODO FARE ANCHE PER GLI ALTRI BUTTON
+     ****
+     
+     
+     
      */
     @IBAction func glassClick(_ sender: Any) {
-        if glassBtn.isSelected {
-            //fai sparire qui il pin
-            let image = UIImage(named: "glassCross") as UIImage?
-            self.glassBtn.setImage(image, for: .normal)
-            self.glassBtn.isSelected = false
+        print("Button glass clicked\n")
+        if glassButton.isSelected {
+            //glassButton era gia stato selezionato
+            //rendere il button grigio
+            //let image = UIImage(named: "glassCross") as UIImage?
+            //self.glassButton.setImage(image, for: .normal)
+            self.glassButton.isSelected = false
         } else {
-            //fai apparire qui il pin
-            let image = UIImage(named: "glass") as UIImage?
-            self.glassBtn.setImage(image, for: .normal)
-            self.glassBtn.isSelected = true
+            //glassButton non era selezionato
+            //rendere il button abilitato
+            //let image = UIImage(named: "glass") as UIImage?
+            //self.glassButton.setImage(image, for: .normal)
+            self.glassButton.isSelected = true
         }
     }
     
@@ -95,16 +73,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
     */
     @IBAction func mixedClick(_ sender: Any) {
-        if mixedBtn.isSelected {
+        print("Button mixed clicked\n")
+        if mixedButton.isSelected {
             //fai sparire qui il pin
             let image = UIImage(named: "mixedCross") as UIImage?
-            self.mixedBtn.setImage(image, for: .normal)
-            self.mixedBtn.isSelected = false
+            self.mixedButton.setImage(image, for: .normal)
+            self.mixedButton.isSelected = false
         } else {
             //fai apparire qui il pin
             let image = UIImage(named: "mixed") as UIImage?
-            self.mixedBtn.setImage(image, for: .normal)
-            self.mixedBtn.isSelected = true
+            self.mixedButton.setImage(image, for: .normal)
+            self.mixedButton.isSelected = true
         }
     }
     
@@ -112,50 +91,35 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
     */
     @IBAction func organicClick(_ sender: Any) {
-        if organicBtn.isSelected {
+        print("Button organic clicked\n")
+        if organicButton.isSelected {
                   //fai sparire qui il pin
                   let image = UIImage(named: "organicCross") as UIImage?
-                  self.organicBtn.setImage(image, for: .normal)
-                  self.organicBtn.isSelected = false
+                  self.organicButton.setImage(image, for: .normal)
+                  self.organicButton.isSelected = false
               } else {
                   //fai apparire qui il pin
                   let image = UIImage(named: "organic") as UIImage?
-                  self.organicBtn.setImage(image, for: .normal)
-                  self.organicBtn.isSelected = true
+                  self.organicButton.setImage(image, for: .normal)
+                  self.organicButton.isSelected = true
               }
     }
     
     /*
     Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
     */
-    @IBAction func paperClick(_ sender: Any) {
-        if paperBtn.isSelected {
-                         //fai sparire qui il pin
-                         let image = UIImage(named: "paperCross") as UIImage?
-                         self.paperBtn.setImage(image, for: .normal)
-                         self.paperBtn.isSelected = false
-                     } else {
-                         //fai apparire qui il pin
-                         let image = UIImage(named: "paper") as UIImage?
-                         self.paperBtn.setImage(image, for: .normal)
-                         self.paperBtn.isSelected = true
-                     }
-    }
-    
-    /*
-    Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
-    */
     @IBAction func plasticClick(_ sender: Any) {
-        if plasticBtn.isSelected {
+        print("Button plastic clicked\n")
+        if plasticButton.isSelected {
             //fai sparire qui il pin
             let image = UIImage(named: "plasticCross") as UIImage?
-            self.plasticBtn.setImage(image, for: .normal)
-            self.plasticBtn.isSelected = false
+            self.plasticButton.setImage(image, for: .normal)
+            self.plasticButton.isSelected = false
         } else {
             //fai apparire qui il pin
             let image = UIImage(named: "plastic") as UIImage?
-            self.plasticBtn.setImage(image, for: .normal)
-            self.plasticBtn.isSelected = true
+            self.plasticButton.setImage(image, for: .normal)
+            self.plasticButton.isSelected = true
         }
     }
     

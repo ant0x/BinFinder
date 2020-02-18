@@ -56,4 +56,11 @@ class AddBinViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     
+    @IBAction func touchCancelOperation(_ sender: Any) {
+        let main = self.presentingViewController as! ViewController
+        self.dismiss(animated: true) {
+            main.reload()
+        }
+    }
+
 }
