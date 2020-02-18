@@ -12,15 +12,15 @@ import CoreLocation
 class Bin: NSObject {
 
     let id: Int
-    let latitude: CLLocationDegrees
-    let longitude: CLLocationDegrees
-    let wasteTypes: Array<String>
+    let latitude: Double
+    let longitude: Double
+    let waste: String
     
-    init(id: Int, latitude: CLLocationDegrees, longitude: CLLocationDegrees, wasteTypes: Array<String>) {
+    init(id: Int, latitude: Double, longitude: Double, waste: String) {
         self.id = id
         self.latitude = latitude
         self.longitude = longitude
-        self.wasteTypes = wasteTypes
+        self.waste = waste
     }
     
 }
