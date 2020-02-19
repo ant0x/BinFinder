@@ -11,7 +11,7 @@ import CoreLocation
 
 class FindBins: NSObject {
     
-    
+    static let sharedInstance = FindBins()
     
     struct BinRequest: Codable {
         var id: String
@@ -23,7 +23,7 @@ class FindBins: NSObject {
     
     
     
-    override init() {
+    private override init() {
 
         super.init()
         
@@ -70,7 +70,9 @@ class FindBins: NSObject {
     
     func addBin(bin: BinStruct) {
         // Create URL
-        let url = URL(string: "http://binfinder.altervista.org/addbin.php?latitude=\(bin.latitude)&longitude=\(bin.longtitude)&type=\(bin.type)")
+        let ty = bin.type.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+        let url = URL(string: "http://binfinder.altervista.org/addbin.php?latitude=\(bin.latitude)&longitude=\(bin.longtitude)&type=\(ty)")
+        print(url!)
         guard let requestUrl = url else { fatalError() }
         // Create URL Request
         var request = URLRequest(url: requestUrl)
@@ -83,3 +85,4 @@ class FindBins: NSObject {
     }
     
 }
+

@@ -24,6 +24,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     let regionRadius: CLLocationDistance = 500
     let locationManager = CLLocationManager()
     
+    let findBins = FindBins.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest

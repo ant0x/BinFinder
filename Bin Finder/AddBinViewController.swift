@@ -50,6 +50,7 @@ class AddBinViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         bins.append(newBin)
         print("Added")
         print(selected)
+        FindBins.sharedInstance.addBin(bin: newBin)
         let main = self.presentingViewController as! ViewController
         self.dismiss(animated: true) {
             main.reload()
