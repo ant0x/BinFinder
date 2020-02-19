@@ -12,7 +12,9 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
-    
+    override open var shouldAutorotate: Bool {
+           return false
+       }
     
     
     @IBOutlet weak var paperBtn: UIButton!
@@ -39,12 +41,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mixedBtn.isSelected = true
         paperBtn.isSelected = true
         organicBtn.isSelected = true
-        plasticBtn.isSelected = true
-        
-        
-
-        
-        
+        plasticBtn.isSelected = true  
         
     }
     
@@ -63,8 +60,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
      */
     @IBAction func glassClick(_ sender: Any) {
         if glassBtn.isSelected {
+            print(sender)
             //fai sparire qui il pin
-            let image = UIImage(named: "") as UIImage?
+            let image = UIImage(named: "disableGlassButton") as UIImage?
             self.glassBtn.setImage(image, for: .normal)
             self.glassBtn.isSelected = false
             restrict(filter: "Glass")
@@ -83,7 +81,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func mixedClick(_ sender: Any) {
         if mixedBtn.isSelected {
             //fai sparire qui il pin
-            let image = UIImage(named: "") as UIImage?
+            let image = UIImage(named: "disableMixedButton") as UIImage?
             self.mixedBtn.setImage(image, for: .normal)
             self.mixedBtn.isSelected = false
             restrict(filter: "Mixed waste")
@@ -102,7 +100,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func organicClick(_ sender: Any) {
         if organicBtn.isSelected {
             //fai sparire qui il pin
-            let image = UIImage(named: "") as UIImage?
+            let image = UIImage(named: "disableOrganicButton") as UIImage?
             self.organicBtn.setImage(image, for: .normal)
             self.organicBtn.isSelected = false
             restrict(filter: "Organic waste")
@@ -121,7 +119,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func paperClick(_ sender: Any) {
         if paperBtn.isSelected {
             //fai sparire qui il pin
-            let image = UIImage(named: "") as UIImage?
+            let image = UIImage(named: "disablePaperButton") as UIImage?
             self.paperBtn.setImage(image, for: .normal)
             self.paperBtn.isSelected = false
             restrict(filter: "Paper")
@@ -133,6 +131,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             grant(filter: "Paper")
         }
     }
+
     
     /*
      Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
@@ -140,7 +139,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func plasticClick(_ sender: Any) {
         if plasticBtn.isSelected {
             //fai sparire qui il pin
-            let image = UIImage(named: "") as UIImage?
+            let image = UIImage(named: "disablePlasticButton") as UIImage?
             self.plasticBtn.setImage(image, for: .normal)
             self.plasticBtn.isSelected = false
             restrict(filter: "Plastic & Metals")
@@ -151,6 +150,35 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.plasticBtn.isSelected = true
             grant(filter: "Plastic & Metals")
         }
+    }
+    
+    
+    @IBAction func resetClick(_ sender: Any) {
+        //plastic
+        var image = UIImage(named: "plasticButton") as UIImage?
+        self.plasticBtn.setImage(image, for: .normal)
+        self.plasticBtn.isSelected = true
+        grant(filter: "Plastic & Metals")
+        //paper
+        image = UIImage(named: "paperButton") as UIImage?
+        self.paperBtn.setImage(image, for: .normal)
+        self.paperBtn.isSelected = true
+        grant(filter: "Paper")
+        //glass
+        image = UIImage(named: "glassButtonSmall") as UIImage?
+        self.glassBtn.setImage(image, for: .normal)
+        self.glassBtn.isSelected = true
+        grant(filter: "Glass")
+        //mixed
+        image = UIImage(named: "mixedButton") as UIImage?
+        self.mixedBtn.setImage(image, for: .normal)
+        self.mixedBtn.isSelected = true
+        grant(filter: "Mixed waste")
+        //organic
+        image = UIImage(named: "organicButton") as UIImage?
+        self.organicBtn.setImage(image, for: .normal)
+        self.organicBtn.isSelected = true
+        grant(filter: "Organic waste")
     }
     
     
@@ -204,8 +232,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     
     @objc func showUserLocation(_ sender: AnyObject) {
-        print("\nStart of showUserLocation()")
-        print("\nUser's location: lat=\(mapView.userLocation.coordinate.latitude), lon=\(mapView.userLocation.coordinate.longitude), title=\(mapView.userLocation.title!)")
+//        print("\nStart of showUserLocation()")
+//        print("\nUser's location: lat=\(mapView.userLocation.coordinate.latitude), lon=\(mapView.userLocation.coordinate.longitude), title=\(mapView.userLocation.title!)")
         
         
         switch CLLocationManager.authorizationStatus() {
@@ -217,11 +245,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             fatalError()
         }
         
-        print("\nEnd of showUserLocation()")
+//        print("\nEnd of showUserLocation()")
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        print("\nStart of locationManager(didChangeAuthorization)")
+//        print("\nStart of locationManager(didChangeAuthorization)")
         
         let authStatus = CLLocationManager.authorizationStatus()
         if authStatus == CLAuthorizationStatus.authorizedWhenInUse
@@ -234,9 +262,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("\nStart of locationManager(didUpdateLocations)")
+//        print("\nStart of locationManager(didUpdateLocations)")
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
+//        print("locations = \(locValue.latitude) \(locValue.longitude)")
         //zoomInLocation(locations.last!)
     }
     
@@ -245,11 +273,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             manager.stopUpdatingLocation()
             return
         }
-        print("\nlocationManager(): \(error.localizedDescription)")
+//        print("\nlocationManager(): \(error.localizedDescription)")
     }
     
     private func requestLocation() {
-        print("\requestLocation() called")
+//        print("\requestLocation() called")
         
         // check if the location service is availalbe on that device
         if !CLLocationManager.locationServicesEnabled() {
@@ -260,7 +288,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     private func zoomInLocation(_ location: CLLocation) {
-        print("\nzoomInUserLocation(): mapView[latitude]=\(location.coordinate.latitude), locationManager[latitude]=\(String(describing: location.coordinate.latitude))")
+//        print("\nzoomInUserLocation(): mapView[latitude]=\(location.coordinate.latitude), locationManager[latitude]=\(String(describing: location.coordinate.latitude))")
         let coordinateSpan = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, span: coordinateSpan)
         mapView.centerCoordinate = location.coordinate
@@ -307,7 +335,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 anView?.image = UIImage(named:"paper")
                 anView?.canShowCallout = true
             case "Glass":
-                print("eeee vetro")
                 anView?.image = UIImage(named:"glass")
                 anView?.canShowCallout = true
             case "Plastic & Metals":
@@ -369,12 +396,41 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func restrict(filter:String)
     {
+        if (glassBtn.isSelected && paperBtn.isSelected && plasticBtn.isSelected && mixedBtn.isSelected && organicBtn.isSelected)
+        {
+            for index in 0..<bins.count
+            {
+                if(bins[index].type != filter)
+                {
+                    /*
+                    switch bins[index].type {
+                    case "Paper":
+                        paperClick(paperBtn as Any)
+                    case "Glass":
+                        glassClick(glassBtn as Any)
+                    case "Plastic & Metals":
+                        plasticClick(plasticBtn as Any)
+                    case "Mixed waste":
+                        mixedClick(mixedBtn as Any)
+                    case "Organic waste":
+                        organicClick(organicBtn as Any)
+                    default:
+                        print("default")
+                    }
+ */
+                    bins[index].visible = false
+                }
+            }
+        }
+        else
+        {
         for index in 0..<bins.count
         {
             if(bins[index].type == filter)
             {
                 bins[index].visible = false
             }
+        }
         }
         fetchBinsOnMap(bins)
     }
