@@ -48,8 +48,7 @@ class AddBinViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         let newBin = BinStruct(type: selected, latitude: (locationManager.location?.coordinate.latitude)!
             , longtitude: (locationManager.location?.coordinate.longitude)!)
         bins.append(newBin)
-        print("Added")
-        print(selected)
+      
         let main = self.presentingViewController as! ViewController
         self.dismiss(animated: true) {
             main.reload()

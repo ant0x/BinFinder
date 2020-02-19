@@ -61,6 +61,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
      */
     @IBAction func glassClick(_ sender: Any) {
         if glassBtn.isSelected {
+            print(sender)
             //fai sparire qui il pin
             let image = UIImage(named: "") as UIImage?
             self.glassBtn.setImage(image, for: .normal)
@@ -202,8 +203,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     
     @objc func showUserLocation(_ sender: AnyObject) {
-        print("\nStart of showUserLocation()")
-        print("\nUser's location: lat=\(mapView.userLocation.coordinate.latitude), lon=\(mapView.userLocation.coordinate.longitude), title=\(mapView.userLocation.title!)")
+//        print("\nStart of showUserLocation()")
+//        print("\nUser's location: lat=\(mapView.userLocation.coordinate.latitude), lon=\(mapView.userLocation.coordinate.longitude), title=\(mapView.userLocation.title!)")
         
         
         switch CLLocationManager.authorizationStatus() {
@@ -215,11 +216,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             fatalError()
         }
         
-        print("\nEnd of showUserLocation()")
+//        print("\nEnd of showUserLocation()")
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        print("\nStart of locationManager(didChangeAuthorization)")
+//        print("\nStart of locationManager(didChangeAuthorization)")
         
         let authStatus = CLLocationManager.authorizationStatus()
         if authStatus == CLAuthorizationStatus.authorizedWhenInUse
@@ -232,9 +233,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("\nStart of locationManager(didUpdateLocations)")
+//        print("\nStart of locationManager(didUpdateLocations)")
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
+//        print("locations = \(locValue.latitude) \(locValue.longitude)")
         //zoomInLocation(locations.last!)
     }
     
@@ -243,11 +244,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             manager.stopUpdatingLocation()
             return
         }
-        print("\nlocationManager(): \(error.localizedDescription)")
+//        print("\nlocationManager(): \(error.localizedDescription)")
     }
     
     private func requestLocation() {
-        print("\requestLocation() called")
+//        print("\requestLocation() called")
         
         // check if the location service is availalbe on that device
         if !CLLocationManager.locationServicesEnabled() {
@@ -258,7 +259,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     private func zoomInLocation(_ location: CLLocation) {
-        print("\nzoomInUserLocation(): mapView[latitude]=\(location.coordinate.latitude), locationManager[latitude]=\(String(describing: location.coordinate.latitude))")
+//        print("\nzoomInUserLocation(): mapView[latitude]=\(location.coordinate.latitude), locationManager[latitude]=\(String(describing: location.coordinate.latitude))")
         let coordinateSpan = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, span: coordinateSpan)
         mapView.centerCoordinate = location.coordinate
@@ -305,7 +306,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 anView?.image = UIImage(named:"paper")
                 anView?.canShowCallout = true
             case "Glass":
-                print("eeee vetro")
                 anView?.image = UIImage(named:"glass")
                 anView?.canShowCallout = true
             case "Plastic & Metals":
@@ -367,12 +367,41 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func restrict(filter:String)
     {
+        if (glassBtn.isSelected && paperBtn.isSelected && plasticBtn.isSelected && mixedBtn.isSelected && organicBtn.isSelected)
+        {
+            for index in 0..<bins.count
+            {
+                if(bins[index].type != filter)
+                {
+                    /*
+                    switch bins[index].type {
+                    case "Paper":
+                        paperClick(paperBtn as Any)
+                    case "Glass":
+                        glassClick(glassBtn as Any)
+                    case "Plastic & Metals":
+                        plasticClick(plasticBtn as Any)
+                    case "Mixed waste":
+                        mixedClick(mixedBtn as Any)
+                    case "Organic waste":
+                        organicClick(organicBtn as Any)
+                    default:
+                        print("default")
+                    }
+ */
+                    bins[index].visible = false
+                }
+            }
+        }
+        else
+        {
         for index in 0..<bins.count
         {
             if(bins[index].type == filter)
             {
                 bins[index].visible = false
             }
+        }
         }
         fetchBinsOnMap(bins)
     }
