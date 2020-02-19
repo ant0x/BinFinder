@@ -12,7 +12,9 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
-    
+    override open var shouldAutorotate: Bool {
+           return false
+       }
     
     
     @IBOutlet weak var paperBtn: UIButton!
