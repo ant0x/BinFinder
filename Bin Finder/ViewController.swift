@@ -37,12 +37,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mixedBtn.isSelected = true
         paperBtn.isSelected = true
         organicBtn.isSelected = true
-        plasticBtn.isSelected = true
-        
-        
-
-        
-        
+        plasticBtn.isSelected = true  
         
     }
     
@@ -63,7 +58,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         if glassBtn.isSelected {
             print(sender)
             //fai sparire qui il pin
-            let image = UIImage(named: "") as UIImage?
+            let image = UIImage(named: "disableGlassButton") as UIImage?
             self.glassBtn.setImage(image, for: .normal)
             self.glassBtn.isSelected = false
             restrict(filter: "Glass")
@@ -82,7 +77,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func mixedClick(_ sender: Any) {
         if mixedBtn.isSelected {
             //fai sparire qui il pin
-            let image = UIImage(named: "") as UIImage?
+            let image = UIImage(named: "disableMixedButton") as UIImage?
             self.mixedBtn.setImage(image, for: .normal)
             self.mixedBtn.isSelected = false
             restrict(filter: "Mixed waste")
@@ -101,7 +96,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func organicClick(_ sender: Any) {
         if organicBtn.isSelected {
             //fai sparire qui il pin
-            let image = UIImage(named: "") as UIImage?
+            let image = UIImage(named: "disableOrganicButton") as UIImage?
             self.organicBtn.setImage(image, for: .normal)
             self.organicBtn.isSelected = false
             restrict(filter: "Organic waste")
@@ -120,7 +115,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func paperClick(_ sender: Any) {
         if paperBtn.isSelected {
             //fai sparire qui il pin
-            let image = UIImage(named: "") as UIImage?
+            let image = UIImage(named: "disablePaperButton") as UIImage?
             self.paperBtn.setImage(image, for: .normal)
             self.paperBtn.isSelected = false
             restrict(filter: "Paper")
@@ -139,7 +134,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func plasticClick(_ sender: Any) {
         if plasticBtn.isSelected {
             //fai sparire qui il pin
-            let image = UIImage(named: "") as UIImage?
+            let image = UIImage(named: "disablePlasticButton") as UIImage?
             self.plasticBtn.setImage(image, for: .normal)
             self.plasticBtn.isSelected = false
             restrict(filter: "Plastic & Metals")

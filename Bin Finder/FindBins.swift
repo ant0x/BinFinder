@@ -11,12 +11,7 @@ import CoreLocation
 
 class FindBins: NSObject {
     
-    struct Bin {
-        var id: Int
-        var lattitude: CLLocationDegrees
-        var longtitude: CLLocationDegrees
-        var type: String
-    }
+    
     
     struct BinRequest: Codable {
         var id: String
@@ -25,12 +20,10 @@ class FindBins: NSObject {
         var type: String
     }
     
-    var bins: Array<Bin>
+    
     
     
     override init() {
-
-        bins = Array<Bin>()
 
         super.init()
         
@@ -67,7 +60,7 @@ class FindBins: NSObject {
 
             
             for bin in res! {
-                self.bins.append(Bin(id: Int(bin.id)!, lattitude: Double(bin.longitude)!, longtitude: Double(bin.longitude)!, type: bin.type))
+                bins.append(BinStruct(type: bin.type, latitude: Double(bin.latitude)!, longtitude: Double(bin.longitude)!))
             }
             
         }
@@ -75,9 +68,9 @@ class FindBins: NSObject {
     }
     
     
-    func addBin(bin: Bin) {
+    func addBin(bin: BinStruct) {
         // Create URL
-        let url = URL(string: "http://binfinder.altervista.org/addbin.php?latitude=\(bin.lattitude)&longitude=\(bin.longtitude)&type=\(bin.type)")
+        let url = URL(string: "http://binfinder.altervista.org/addbin.php?latitude=\(bin.latitude)&longitude=\(bin.longtitude)&type=\(bin.type)")
         guard let requestUrl = url else { fatalError() }
         // Create URL Request
         var request = URLRequest(url: requestUrl)
