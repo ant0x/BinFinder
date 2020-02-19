@@ -12,6 +12,7 @@ import CoreLocation
 class FindBins: NSObject {
     
     static let sharedInstance = FindBins()
+    //let main = ViewController.main
     
     struct BinRequest: Codable {
         var id: String
@@ -19,9 +20,7 @@ class FindBins: NSObject {
         var longitude: String
         var type: String
     }
-    
-    
-    
+        
     
     private override init() {
 

@@ -13,8 +13,8 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     override open var shouldAutorotate: Bool {
-           return false
-       }
+        return false
+    }
     
     
     @IBOutlet weak var paperBtn: UIButton!
@@ -26,24 +26,31 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     let regionRadius: CLLocationDistance = 500
     let locationManager = CLLocationManager()
     
-    let findBins = FindBins.sharedInstance
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        bins.append(BinStruct(type: "Glass", latitude: 40.771653, longtitude: 14.794155))
+        do {
+            let findBins = FindBins.sharedInstance
+            sleep(1)
+            reload()
+               }
+        
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         mapView.showsUserLocation = true
         locationManager.delegate = self
         fetchBinsOnMap(bins)
         showUserLocation(mapView)
-  
         
         glassBtn.isSelected = true
         mixedBtn.isSelected = true
         paperBtn.isSelected = true
         organicBtn.isSelected = true
-        plasticBtn.isSelected = true  
+        plasticBtn.isSelected = true
         
     }
+    
+    
+    
     
     
     @IBAction func centerMap(_ sender: Any) {
@@ -131,7 +138,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             grant(filter: "Paper")
         }
     }
-
+    
     
     /*
      Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
@@ -232,8 +239,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     
     @objc func showUserLocation(_ sender: AnyObject) {
-//        print("\nStart of showUserLocation()")
-//        print("\nUser's location: lat=\(mapView.userLocation.coordinate.latitude), lon=\(mapView.userLocation.coordinate.longitude), title=\(mapView.userLocation.title!)")
+        //        print("\nStart of showUserLocation()")
+        //        print("\nUser's location: lat=\(mapView.userLocation.coordinate.latitude), lon=\(mapView.userLocation.coordinate.longitude), title=\(mapView.userLocation.title!)")
         
         
         switch CLLocationManager.authorizationStatus() {
@@ -245,11 +252,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             fatalError()
         }
         
-//        print("\nEnd of showUserLocation()")
+        //        print("\nEnd of showUserLocation()")
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-//        print("\nStart of locationManager(didChangeAuthorization)")
+        //        print("\nStart of locationManager(didChangeAuthorization)")
         
         let authStatus = CLLocationManager.authorizationStatus()
         if authStatus == CLAuthorizationStatus.authorizedWhenInUse
@@ -262,9 +269,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        print("\nStart of locationManager(didUpdateLocations)")
+        //        print("\nStart of locationManager(didUpdateLocations)")
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-//        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        //        print("locations = \(locValue.latitude) \(locValue.longitude)")
         //zoomInLocation(locations.last!)
     }
     
@@ -273,11 +280,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             manager.stopUpdatingLocation()
             return
         }
-//        print("\nlocationManager(): \(error.localizedDescription)")
+        //        print("\nlocationManager(): \(error.localizedDescription)")
     }
     
     private func requestLocation() {
-//        print("\requestLocation() called")
+        //        print("\requestLocation() called")
         
         // check if the location service is availalbe on that device
         if !CLLocationManager.locationServicesEnabled() {
@@ -288,7 +295,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     private func zoomInLocation(_ location: CLLocation) {
-//        print("\nzoomInUserLocation(): mapView[latitude]=\(location.coordinate.latitude), locationManager[latitude]=\(String(describing: location.coordinate.latitude))")
+        //        print("\nzoomInUserLocation(): mapView[latitude]=\(location.coordinate.latitude), locationManager[latitude]=\(String(describing: location.coordinate.latitude))")
         let coordinateSpan = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, span: coordinateSpan)
         mapView.centerCoordinate = location.coordinate
@@ -384,7 +391,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         //print(locationManager.location!.coordinate)
     }
     
-    func reload()
+    public func reload()
     {
         fetchBinsOnMap(bins)
     }
@@ -403,34 +410,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 if(bins[index].type != filter)
                 {
                     /*
-                    switch bins[index].type {
-                    case "Paper":
-                        paperClick(paperBtn as Any)
-                    case "Glass":
-                        glassClick(glassBtn as Any)
-                    case "Plastic & Metals":
-                        plasticClick(plasticBtn as Any)
-                    case "Mixed waste":
-                        mixedClick(mixedBtn as Any)
-                    case "Organic waste":
-                        organicClick(organicBtn as Any)
-                    default:
-                        print("default")
-                    }
- */
+                     switch bins[index].type {
+                     case "Paper":
+                     paperClick(paperBtn as Any)
+                     case "Glass":
+                     glassClick(glassBtn as Any)
+                     case "Plastic & Metals":
+                     plasticClick(plasticBtn as Any)
+                     case "Mixed waste":
+                     mixedClick(mixedBtn as Any)
+                     case "Organic waste":
+                     organicClick(organicBtn as Any)
+                     default:
+                     print("default")
+                     }
+                     */
                     bins[index].visible = false
                 }
             }
         }
         else
         {
-        for index in 0..<bins.count
-        {
-            if(bins[index].type == filter)
+            for index in 0..<bins.count
             {
-                bins[index].visible = false
+                if(bins[index].type == filter)
+                {
+                    bins[index].visible = false
+                }
             }
-        }
         }
         fetchBinsOnMap(bins)
     }
