@@ -126,6 +126,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             grant(filter: "Paper")
         }
     }
+
     
     /*
      Aggiungere nella funzione snippet per la rimozione/ aggiunta pin sulla mappa
@@ -144,6 +145,35 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.plasticBtn.isSelected = true
             grant(filter: "Plastic & Metals")
         }
+    }
+    
+    
+    @IBAction func resetClick(_ sender: Any) {
+        //plastic
+        var image = UIImage(named: "plasticButton") as UIImage?
+        self.plasticBtn.setImage(image, for: .normal)
+        self.plasticBtn.isSelected = true
+        grant(filter: "Plastic & Metals")
+        //paper
+        image = UIImage(named: "paperButton") as UIImage?
+        self.paperBtn.setImage(image, for: .normal)
+        self.paperBtn.isSelected = true
+        grant(filter: "Paper")
+        //glass
+        image = UIImage(named: "glassButtonSmall") as UIImage?
+        self.glassBtn.setImage(image, for: .normal)
+        self.glassBtn.isSelected = true
+        grant(filter: "Glass")
+        //mixed
+        image = UIImage(named: "mixedButton") as UIImage?
+        self.mixedBtn.setImage(image, for: .normal)
+        self.mixedBtn.isSelected = true
+        grant(filter: "Mixed waste")
+        //organic
+        image = UIImage(named: "organicButton") as UIImage?
+        self.organicBtn.setImage(image, for: .normal)
+        self.organicBtn.isSelected = true
+        grant(filter: "Organic waste")
     }
     
     
